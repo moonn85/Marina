@@ -1,0 +1,246 @@
+/* MeVaBe Header - Optimized for Consultation-based Booking */
+
+.mevabe-header {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.mevabe-header-scrolled {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.mevabe-header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Logo Section */
+.mevabe-header-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.mevabe-logo-img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    transition: height 0.3s ease;
+}
+
+.mevabe-header-scrolled .mevabe-logo-img {
+    height: 40px;
+}
+
+.mevabe-header-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a202c;
+    background: linear-gradient(90deg, #efe301 0%, #ff8d41 50%, #fe22c7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    white-space: nowrap;
+    letter-spacing: -0.5px;
+}
+
+.mevabe-header-scrolled .mevabe-header-title {
+    font-size: 16px;
+}
+
+/* CTA Section */
+.mevabe-header-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+/* Hotline */
+.mevabe-header-hotline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+}
+
+.mevabe-header-scrolled .mevabe-header-hotline {
+    background-color: #f0f4ff;
+}
+
+.mevabe-hotline-text {
+    color: #1a202c;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.mevabe-header-hotline:hover .mevabe-hotline-text {
+    color: #2f2f2f;
+}
+
+.mevabe-header-hotline svg {
+    color: #2f2f2f;
+    transition: transform 0.3s ease;
+}
+
+.mevabe-header-hotline:hover svg {
+    transform: scale(1.1);
+}
+
+/* Consultation Button */
+.mevabe-consultation-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    background: linear-gradient(90deg, #ef7cc3 0%, #a5f0ff 50%, #a0f5c9 100%);
+    color: rgb(12, 19, 75);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.mevabe-consultation-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+}
+
+.mevabe-consultation-btn:active {
+    transform: translateY(0);
+}
+
+.mevabe-consultation-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.mevabe-consultation-btn:hover svg {
+    transform: scale(1.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mevabe-header {
+        height: 60px;
+    }
+
+    .mevabe-header-container {
+        padding: 0 16px;
+        gap: 16px;
+    }
+
+    .mevabe-logo-img {
+        height: 40px;
+    }
+
+    .mevabe-header-scrolled .mevabe-logo-img {
+        height: 36px;
+    }
+
+    .mevabe-header-title {
+        font-size: 14px;
+    }
+
+    .mevabe-header-scrolled .mevabe-header-title {
+        font-size: 13px;
+    }
+
+    .mevabe-header-cta {
+        gap: 12px;
+    }
+
+    .mevabe-header-hotline {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .mevabe-hotline-text {
+        display: none;
+    }
+
+    .mevabe-header-hotline svg {
+        margin: 0;
+    }
+
+    .mevabe-consultation-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+        gap: 6px;
+    }
+
+    .mevabe-consultation-btn span {
+        display: none;
+    }
+
+    .mevabe-consultation-btn svg {
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .mevabe-header-container {
+        padding: 0 12px;
+        gap: 8px;
+    }
+
+    .mevabe-header-hotline {
+        display: none;
+    }
+
+    .mevabe-consultation-btn {
+        padding: 8px 12px;
+        gap: 4px;
+    }
+}
+
+/* Animation for header appearance */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mevabe-header {
+    animation: slideDown 0.5s ease;
+}
+
+/* Smooth transition for background change on scroll */
+@media (prefers-reduced-motion: no-preference) {
+    .mevabe-header {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}

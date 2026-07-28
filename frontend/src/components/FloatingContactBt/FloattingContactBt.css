@@ -1,0 +1,162 @@
+.floating-container {
+  position: fixed;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.floating-contact-options {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.floating-contact-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #08243f;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(10, 33, 64, 0.12);
+  overflow: hidden;
+  pointer-events: auto;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: width 220ms ease, padding 220ms ease, transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  box-sizing: border-box;
+}
+
+/* Specific paddings for perfect centering when collapsed */
+.floating-contact-link--zalo {
+  padding: 0 13px;
+}
+
+.floating-contact-link--whatsapp {
+  padding: 0 11px;
+}
+
+.floating-contact-link:hover,
+.floating-contact-link:focus-visible {
+  width: 240px;
+  padding: 0 16px;
+  border-color: var(--accent);
+  color: #08243f;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(10, 33, 64, 0.18);
+}
+
+.floating-contact-link:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.floating-contact-icon {
+  object-fit: contain;
+  flex: 0 0 auto;
+  animation: floatingContactPulse 2.4s ease-in-out infinite;
+}
+
+.floating-contact-icon--zalo {
+  width: 28px;
+  height: 28px;
+}
+
+.floating-contact-icon--whatsapp {
+  width: 32px;
+  height: 32px;
+}
+
+.floating-contact-link span {
+  display: inline-block;
+  max-width: 0;
+  opacity: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-left: 0;
+  transition: max-width 220ms ease, opacity 180ms ease, margin-left 220ms ease;
+}
+
+.floating-contact-link:hover span,
+.floating-contact-link:focus-visible span {
+  max-width: 190px;
+  opacity: 1;
+  margin-left: 10px;
+}
+
+@keyframes floatingContactPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-container {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
+  }
+
+  .floating-contact-options {
+    gap: 8px;
+  }
+
+  .floating-contact-link {
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 8px 20px rgba(10, 33, 64, 0.12);
+  }
+
+  .floating-contact-link--zalo {
+    padding: 0 10px;
+  }
+
+  .floating-contact-link--whatsapp {
+    padding: 0 8px;
+  }
+
+  .floating-contact-icon--zalo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .floating-contact-icon--whatsapp {
+    width: 32px;
+    height: 32px;
+  }
+
+  .floating-contact-link:hover,
+  .floating-contact-link:focus-visible {
+    width: 48px;
+    padding: inherit; /* keeps the same centering padding */
+  }
+
+  .floating-contact-link:hover span,
+  .floating-contact-link:focus-visible span {
+    max-width: 0;
+    opacity: 0;
+    margin-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-contact-link,
+  .floating-contact-link span,
+  .floating-contact-icon {
+    transition: none;
+    animation: none;
+  }
+}

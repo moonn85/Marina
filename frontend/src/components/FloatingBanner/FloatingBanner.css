@@ -1,0 +1,210 @@
+.floating-banner {
+    position: fixed;
+    bottom: 2px;
+    right: 20px;
+    width: 450px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    animation: slideFromRight 1.5s ease-out;
+}
+
+@keyframes slideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(350px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.floating-banner-close {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: rgb(255, 255, 255);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.floating-banner-close:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.floating-banner-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.floating-banner-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.floating-banner-text {
+    padding: 12px 12px 0;
+    flex: 1;
+}
+
+.floating-banner-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.3;
+}
+
+.floating-banner-description {
+    margin: 4px 0 0;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.3;
+}
+
+.floating-banner-cta {
+    margin: 8px 12px 12px;
+    padding: 8px 12px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.floating-banner-cta:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+/* Minimized Banner Styles */
+.floating-banner-minimized {
+    position: fixed;
+    right: 10px;
+    bottom: 20%;
+    width: 120px;
+    height: 120px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    z-index: 999;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    animation: slideFromRight 0.3s ease-out;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.floating-banner-minimized:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.floating-banner-minimized-image {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+}
+
+.floating-banner-minimized-text {
+    padding: 4px 6px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.floating-banner-minimized-text p {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.floating-banner-minimized-expand {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: rgba(102, 126, 234, 0.9);
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    padding: 0;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.floating-banner-minimized-expand:hover {
+    background: rgba(102, 126, 234, 1);
+}
+
+.floating-banner-cta:active {
+    transform: scale(0.98);
+}
+
+/* Responsive - ẩn trên mobile nhỏ */
+@media (max-width: 480px) {
+    .floating-banner {
+        width: 280px;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .floating-banner-image {
+        height: 120px;
+    }
+
+    .floating-banner-title {
+        font-size: 13px;
+    }
+
+    .floating-banner-description {
+        font-size: 11px;
+    }
+
+    .floating-banner-cta {
+        font-size: 11px;
+    }
+}
+
+/* Ẩn hoàn toàn trên các thiết bị rất nhỏ */
+@media (max-width: 360px) {
+    .floating-banner {
+        display: none;
+    }
+}

@@ -1,0 +1,411 @@
+.footer-wrapper {
+  width: 100%;
+  background: #daedff;
+  color: #1a2d42;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #bdd8ef;
+  padding-top: 20px;
+}
+
+.footer-main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-brand {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-content-below {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.footer-left-columns {
+  margin-bottom: 150px;
+  display: flex;
+  gap: 0px;
+  flex: 1;
+  align-items: flex-start;
+}
+
+.footer-right-section {
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+  min-width: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.footer-left-columns .footer-column:first-child {
+  max-width: 300px;
+  flex: 1;
+}
+
+.footer-left-columns .footer-column:nth-child(2) {
+  flex: 1;
+  max-width: 200px;
+}
+
+.footer-left-columns .footer-column:last-child {
+  flex: 1;
+  max-width: 200px;
+}
+
+.footer-column ul {
+  text-align: left;
+}
+
+.footer-column li {
+  text-align: left;
+  line-height: 1.4;
+  margin: 0;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.footer-column li.address-item {
+  white-space: normal;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+
+.footer-column li i {
+  color: #1c5f9e;
+  margin-right: 8px;
+  flex-shrink: 0;
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+.footer-column li span {
+  font-weight: normal;
+}
+
+.footer-column li.address-item i {
+  margin-top: 0;
+}
+
+.footer-column h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0a2140;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 80px;
+}
+
+.footer-column li {
+  margin: 0;
+}
+
+.footer-column a {
+  color: #405d78;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  transition: all var(--transition-fast);
+}
+
+.footer-column a:hover {
+  color: #1c5f9e;
+  transform: translateX(4px);
+  display: inline-block;
+}
+
+
+.social-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  min-height: 80px;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #405d78;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  min-height: 20px;
+  transition: all var(--transition-fast);
+}
+
+.social-icons a:hover {
+  color: #1c5f9e;
+}
+
+.icon-fl {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.tripadvisor-button {
+  margin-top: 8px;
+}
+
+.tripadvisor-button img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.footer-map {
+  flex-shrink: 0;
+  margin-top: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-start;
+}
+
+.map-title {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.map-title h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0a2140;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-map iframe {
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #b7d3eb;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.footer-map iframe:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  border-color: #1c5f9e;
+}
+
+.footer-bottom {
+  width: 100%;
+  background-color: #daedff;
+  color: #405d78;
+  border-top: 1px solid #bdd8ef;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+.footer-bottom-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.copyright {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.footer-links {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .footer-left-columns {
+    gap: 40px;
+  }
+
+  .footer-content-below {
+    gap: 30px;
+  }
+
+  .map-title h4 {
+    font-size: 13px;
+  }
+
+  .footer-map iframe {
+    width: 180px;
+    height: 135px;
+    border-radius: 10px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .footer-main {
+    padding: 15px;
+  }
+
+  .footer-content-below {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-left-columns {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .footer-right-section {
+    align-self: center;
+    margin-top: 0;
+  }
+
+  .footer-map {
+    align-self: center;
+    margin-top: 0;
+  }
+
+  .map-title h4 {
+    font-size: 12px;
+  }
+
+  .footer-map iframe {
+    width: 250px;
+    height: 150px;
+    border-radius: 8px;
+  }
+
+  .footer-bottom-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+  }
+
+  .copyright,
+  .footer-links {
+    font-size: 12px;
+  }
+}
+
+/* Mobile nhỏ */
+@media (max-width: 480px) {
+  .footer-main {
+    padding: 10px;
+  }
+
+  .logo-image {
+    height: 50px;
+  }
+
+  .footer-left-columns {
+    gap: 20px;
+  }
+
+  .footer-column {
+    gap: 12px;
+  }
+
+  .footer-column h3 {
+    height: 18px;
+    font-size: 14px;
+  }
+
+  .footer-column ul {
+    min-height: 70px;
+  }
+
+  .footer-column li {
+    min-height: 18px;
+    white-space: nowrap;
+  }
+
+  .footer-column li.address-item {
+    white-space: normal;
+    align-items: flex-start;
+    line-height: 1.4;
+  }
+
+  .footer-column li i {
+    font-size: 14px;
+    margin-right: 6px;
+  }
+
+  .footer-column a {
+    font-size: 13px;
+  }
+
+  .map-title h4 {
+    font-size: 11px;
+  }
+
+  .footer-map iframe {
+    width: 200px;
+    height: 120px;
+    border-radius: 6px;
+  }
+
+  .footer-bottom-content {
+    padding: 0 10px;
+  }
+
+  .footer-bottom {
+    padding: 0px 0;
+    margin-bottom: 0px
+  }
+
+  .copyright,
+  .footer-links {
+    font-size: 11px;
+  }
+}

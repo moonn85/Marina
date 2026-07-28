@@ -1,0 +1,1053 @@
+.mevabe-page {
+    width: 100%;
+    min-height: 100vh;
+    background: #f0fffe;
+    padding-top: 70px;
+}
+
+.mevabe-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+.mevabe-hero {
+
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 25%, #FF69B4 50%, #87CEEB 75%, #90EE90 100%);
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(255, 107, 107, 0.3);
+}
+
+.mevabe-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><path fill="rgba(255,255,255,0.1)" d="M0,150 Q300,50 600,150 T1200,150 L1200,400 L0,400 Z"/><path fill="rgba(255,255,255,0.05)" d="M0,200 Q300,100 600,200 T1200,200 L1200,400 L0,400 Z"/></svg>');
+    background-repeat: repeat-x;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.mevabe-hero-decorations {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.mevabe-deco {
+    position: absolute;
+    font-size: 60px;
+    opacity: 1;
+    animation: float 3s ease-in-out infinite;
+}
+
+.mevabe-deco-1 {
+    top: 50%;
+    left: 1%;
+    animation-delay: 0s;
+}
+
+.mevabe-deco-2 {
+    top: 17%;
+    right: 2%;
+    animation-delay: 1s;
+}
+
+.mevabe-deco-3 {
+    top: 45%;
+    right: 5%;
+    font-size: 80px;
+    animation-delay: 2s;
+}
+
+.mevabe-deco-4 {
+    bottom: 20%;
+    left: 4%;
+    font-size: 50px;
+    animation-delay: 0.5s;
+}
+
+.mevabe-deco-5 {
+    bottom: 15%;
+    right: 2%;
+    animation-delay: 1.5s;
+}
+
+.mevabe-deco-6 {
+    top: 29%;
+    left: 2%;
+    font-size: 60px;
+    animation-delay: 1s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+.mevabe-hero-content {
+
+    position: relative;
+    z-index: 2;
+}
+
+.mevabe-hero-title {
+    font-size: 62px;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+    line-height: 1.4;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+.mevabe-title-main {
+    display: block;
+    font-size: 72px;
+    color: #08174d;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 4px 4px 0px #40B0D8, 8px 8px 0px rgba(0, 0, 0, 0.15);
+    animation: bounce 2s infinite;
+}
+
+.mevabe-title-highlight {
+    display: block;
+    font-size: 36px;
+    color: #40B0D8;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgb(0, 21, 214);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    margin-top: -10px;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.mevabe-hero-subtitle {
+    font-size: 18px;
+    margin: 0;
+    opacity: 0.98;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: rgb(0, 35, 210);
+    font-family: Georgia, serif;
+    font-weight: 700;
+}
+
+/* Featured Combos Section */
+.mevabe-featured-combos {
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #f5fbff 100%);
+    margin-bottom: 40px;
+}
+
+.mevabe-featured-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.mevabe-featured-title h2 {
+    font-size: 48px;
+    font-weight: 800;
+    color: #1e88e5;
+    margin: 0 0 15px 0;
+    letter-spacing: -1px;
+}
+
+.mevabe-featured-title p {
+    font-size: 18px;
+    color: #666;
+    margin: 0;
+}
+
+.mevabe-featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mevabe-featured-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(30, 136, 229, 0.12);
+    transition: all 0.3s ease;
+    position: relative;
+    border: 2px solid #e3f2fd;
+}
+
+.mevabe-featured-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(30, 136, 229, 0.2);
+}
+
+.mevabe-featured-card-popular {
+    border: 2px solid #1e88e5;
+    background: linear-gradient(135deg, #f5fbff 0%, #e3f2fd 100%);
+}
+
+.mevabe-featured-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: #ffc107;
+    color: #333;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.mevabe-featured-badge-popular {
+    background: #1e88e5;
+    color: white;
+}
+
+.mevabe-featured-header {
+    margin-bottom: 25px;
+}
+
+.mevabe-featured-header h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e88e5;
+    margin: 0 0 10px 0;
+}
+
+.mevabe-featured-duration {
+    font-size: 16px;
+    color: #666;
+    margin: 5px 0;
+    font-weight: 600;
+}
+
+.mevabe-featured-target {
+    font-size: 14px;
+    color: #999;
+    margin: 5px 0 0 0;
+    font-style: italic;
+}
+
+.mevabe-featured-content {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e3f2fd;
+}
+
+.mevabe-featured-content h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 12px 0;
+}
+
+.mevabe-featured-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mevabe-featured-content li {
+    font-size: 15px;
+    color: #555;
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.mevabe-featured-btn {
+    width: 100%;
+    padding: 12px 20px;
+    background: #1e88e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mevabe-featured-btn:hover {
+    background: #1565c0;
+    transform: scale(1.02);
+}
+
+.mevabe-featured-btn-primary {
+    background: linear-gradient(135deg, #1e88e5, #1565c0);
+    font-weight: 800;
+}
+
+.mevabe-featured-btn-primary:hover {
+    box-shadow: 0 8px 16px rgba(30, 136, 229, 0.4);
+}
+
+/* Highlights Section - Đơn giản & gọn */
+.mevabe-highlights {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #E0F7FF 0%, #B0E8FF 100%);
+}
+
+.mevabe-highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mevabe-highlight-item {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(64, 176, 216, 0.2);
+}
+
+.mevabe-highlight-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(64, 176, 216, 0.3);
+    border-color: #7FFFD4;
+}
+
+.mevabe-highlight-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.mevabe-highlight-item h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #40B0D8;
+    margin: 0 0 8px 0;
+}
+
+.mevabe-highlight-item p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Booking Section - Clean & Simple */
+.mevabe-booking {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #E0F7FF 0%, #B0E8FF 100%);
+    margin-top: 40px;
+}
+
+.mevabe-booking-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    border: 3px solid #40B0D8;
+    box-shadow: 0 4px 12px rgba(64, 176, 216, 0.2);
+    transition: all 0.3s;
+}
+
+.mevabe-booking-content:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(64, 176, 216, 0.3);
+    border-color: #7FFFD4;
+}
+
+.mevabe-booking-text {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.mevabe-booking-title {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+    line-height: 1.3;
+    color: #40B0D8;
+}
+
+.mevabe-booking-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mevabe-booking-benefits li {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    line-height: 1.5;
+}
+
+.mevabe-booking-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.mevabe-booking-sign {
+    font-size: 24px;
+    font-weight: 700;
+    color: #40B0D8;
+}
+
+.mevabe-booking-phone {
+    font-size: 28px;
+    font-weight: 800;
+    color: #40B0D8;
+    letter-spacing: 1px;
+}
+
+.mevabe-booking-btn {
+    padding: 14px 40px;
+    background: linear-gradient(90deg, #40B0D8 0%, #7FFFD4 100%);
+    color: white;
+    border: 3px solid #40B0D8;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 0px #40B0D8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 200px;
+}
+
+.mevabe-booking-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0px #40B0D8;
+}
+
+.mevabe-booking-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0px #40B0D8;
+}
+
+.mevabe-booking-note {
+    margin-top: 16px;
+    font-size: 16px;
+    color: #40B0D8;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Responsive Featured Combos */
+@media (max-width: 768px) {
+    .mevabe-featured-title h2 {
+        font-size: 32px;
+    }
+
+    .mevabe-featured-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .mevabe-featured-card {
+        padding: 20px;
+    }
+
+    .mevabe-featured-header h3 {
+        font-size: 22px;
+    }
+
+    .mevabe-featured-btn {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mevabe-page {
+        padding-top: 60px;
+    }
+
+    .mevabe-hero {
+        padding: 50px 20px;
+    }
+
+    .mevabe-hero-title {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+
+    .mevabe-hero-subtitle {
+        font-size: 14px;
+    }
+
+    .mevabe-featured-title h2 {
+        font-size: 24px;
+    }
+
+    .mevabe-featured-title p {
+        font-size: 14px;
+    }
+
+    .mevabe-featured-card {
+        padding: 15px;
+    }
+
+    .mevabe-featured-header h3 {
+        font-size: 18px;
+    }
+
+    .mevabe-booking {
+        padding: 40px 15px;
+        margin-top: 30px;
+    }
+
+    .mevabe-booking-content {
+        padding: 25px 15px;
+        border-radius: 16px;
+        border: 2px solid #40B0D8;
+    }
+
+    .mevabe-booking-title {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .mevabe-booking-benefits {
+        margin: 15px 0;
+    }
+
+    .mevabe-booking-benefits li {
+        font-size: 14px;
+        margin: 8px 0;
+    }
+
+    .mevabe-booking-phone {
+        font-size: 20px;
+        margin: 12px 0;
+    }
+
+    .mevabe-booking-btn {
+        min-width: 160px;
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+/* Category Title */
+.mevabe-category-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 800;
+    color: #40B0D8;
+    margin: 40px 0 30px 0;
+    letter-spacing: -0.5px;
+}
+
+/* Combos Section */
+.mevabe-combos {
+    padding: 40px 20px 60px 20px;
+    background: #f0fffe;
+}
+
+.mevabe-combos-filter-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 50px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mevabe-filter-wrapper-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.mevabe-filter-banner {
+    flex-shrink: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(64, 176, 216, 0.2);
+    transition: all 0.3s ease;
+}
+
+.mevabe-filter-banner img {
+    width: 280px;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.mevabe-filter-banner:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(64, 176, 216, 0.3);
+}
+
+.mevabe-filter-right-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+}
+
+.mevabe-combos-banner-top {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(64, 176, 216, 0.2);
+    transition: all 0.3s ease;
+}
+
+.mevabe-hero {
+    height: 500px;
+    background-image: url('https://res.cloudinary.com/drpqrn5jz/image/upload/v1778143298/88d2dda15790845f6eac5022862689a5_c01jep.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(255, 107, 107, 0.3);
+}
+
+.mevabe-combos-banner-top img {
+    width: 100%;
+    height: auto;
+    max-height: 470px;
+    object-fit: cover;
+    display: block;
+}
+
+.mevabe-combos-banner-top:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(64, 176, 216, 0.3);
+}
+
+.mevabe-combos-filter {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.mevabe-filter-btn {
+    padding: 10px 24px;
+    background: white;
+    color: #40B0D8;
+    border: 2px solid #40B0D8;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+
+.mevabe-filter-btn.active {
+    background: #40B0D8;
+    color: white;
+    box-shadow: 0 4px 12px rgba(64, 176, 216, 0.3);
+}
+
+/* Combos Grid */
+.mevabe-combos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mevabe-combo-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(64, 176, 216, 0.15);
+    transition: all 0.3s ease;
+    border: 2px solid #e3f2fd;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mevabe-combo-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(64, 176, 216, 0.25);
+    border-color: #40B0D8;
+}
+
+.mevabe-combo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #E0F7FF 0%, #f5fbff 100%);
+    border-bottom: 1px solid #e3f2fd;
+}
+
+.mevabe-combo-icon {
+    font-size: 40px;
+}
+
+.mevabe-wishlist-btn {
+    background: white;
+    border: 2px solid #40B0D8;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #40B0D8;
+}
+
+.mevabe-wishlist-btn:hover {
+    background: #40B0D8;
+    color: white;
+    transform: scale(1.1);
+}
+
+.mevabe-wishlist-btn.active {
+    background: #40B0D8;
+    color: white;
+}
+
+.mevabe-combo-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #40B0D8;
+    margin: 20px 20px 8px 20px;
+    line-height: 1.4;
+}
+
+.mevabe-combo-description {
+    font-size: 14px;
+    color: #666;
+    margin: 0 20px 20px 20px;
+    line-height: 1.5;
+}
+
+.mevabe-combo-includes {
+    padding: 0 20px 20px 20px;
+    border-bottom: 1px solid #e3f2fd;
+}
+
+.mevabe-combo-includes h4 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 10px 0;
+}
+
+.mevabe-combo-includes ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.mevabe-combo-includes li {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.4;
+}
+
+.mevabe-combo-prices {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mevabe-combo-prices h4 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 12px 0;
+}
+
+.mevabe-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f5fbff;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+
+
+.mevabe-price-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mevabe-price-nights {
+    font-size: 13px;
+    font-weight: 700;
+    color: #40B0D8;
+}
+
+.mevabe-price-guests {
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
+}
+
+.mevabe-price-age {
+    font-size: 11px;
+    color: #999;
+    font-style: italic;
+}
+
+.mevabe-price-value {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ff6b6b;
+    text-align: right;
+}
+
+.mevabe-combo-btn {
+    width: 100%;
+    padding: 12px 20px;
+    background: linear-gradient(90deg, #40B0D8 100%, #7FFFD4 0%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: auto;
+}
+
+.mevabe-combo-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(64, 176, 216, 0.3);
+}
+
+.mevabe-combo-btn:active {
+    transform: translateY(0px);
+}
+
+/* Responsive Combos */
+@media (max-width: 768px) {
+    .mevabe-category-title {
+        font-size: 28px;
+        margin: 30px 0 20px 0;
+    }
+
+    .mevabe-combos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .mevabe-combos-filter-wrapper {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .mevabe-filter-wrapper-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .mevabe-filter-right-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .mevabe-filter-banner {
+        width: 100%;
+    }
+
+    .mevabe-filter-banner img {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+    }
+
+    .mevabe-combos-banner-top img {
+        max-height: 200px;
+    }
+
+    .mevabe-combos-filter {
+        gap: 10px;
+        margin-bottom: 0;
+        justify-content: flex-start;
+    }
+
+    .mevabe-filter-btn {
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+
+    .mevabe-combo-name {
+        font-size: 16px;
+    }
+
+    .mevabe-combo-icon {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mevabe-category-title {
+        font-size: 22px;
+        margin: 20px 0 15px 0;
+    }
+
+    .mevabe-combos {
+        padding: 30px 15px 50px 15px;
+    }
+
+    .mevabe-combos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mevabe-combos-filter-wrapper {
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 30px;
+    }
+
+    .mevabe-filter-wrapper-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .mevabe-filter-right-section {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .mevabe-filter-banner {
+        width: 100%;
+    }
+
+    .mevabe-filter-banner img {
+        width: 100%;
+        height: auto;
+        max-height: 250px;
+    }
+
+    .mevabe-combos-banner-top img {
+        max-height: 150px;
+    }
+
+    .mevabe-combos-filter {
+        gap: 8px;
+        margin-bottom: 0;
+        justify-content: flex-start;
+    }
+
+    .mevabe-filter-btn {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .mevabe-combo-card {
+        border-radius: 12px;
+    }
+
+    .mevabe-combo-header {
+        padding: 15px;
+    }
+
+    .mevabe-combo-name {
+        font-size: 14px;
+        margin: 15px 15px 6px 15px;
+    }
+
+    .mevabe-combo-description {
+        font-size: 12px;
+        margin: 0 15px 15px 15px;
+    }
+
+    .mevabe-combo-includes,
+    .mevabe-combo-prices {
+        padding: 0 15px 15px 15px;
+    }
+
+    .mevabe-price-value {
+        font-size: 14px;
+    }
+
+    .mevabe-combo-btn {
+        font-size: 13px;
+        padding: 10px 16px;
+    }
+}

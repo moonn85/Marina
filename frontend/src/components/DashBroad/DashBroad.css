@@ -1,0 +1,10 @@
+.container-dashbroad{
+    margin-top: 130px;
+    
+
+}
+.container-dashbroad-card{
+    max-width: 1500px;
+    margin: 8px auto;
+    padding: 20 ;
+}

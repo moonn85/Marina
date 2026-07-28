@@ -1,0 +1,145 @@
+#be-booking-form {
+    width: 100%;
+    max-width: 1110px;
+    margin: 0 auto 10px auto;
+    padding: 0 5px;
+}
+
+/* Mobile responsive - tăng padding để không bị sát viền */
+@media screen and (max-width: 768px) {
+    #be-booking-form {
+        padding: 0 20px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    /* Đảm bảo các phần tử con trong booking form có padding */
+    #be-booking-form > * {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #be-booking-form {
+        padding: 0 16px;
+    }
+}
+
+#tl-booking-cart {
+    z-index: 1 !important;
+}
+
+.be-title {
+    margin-top: 100px;
+}
+
+/* Container wrapper cho booking form - đảm bảo padding trên mobile */
+body:has(#be-booking-form) .main-content {
+    padding-left: 0;
+    padding-right: 0;
+    overflow-x: hidden;
+}
+
+/* Đảm bảo các phần tử bên trong booking form có padding đủ */
+@media screen and (max-width: 768px) {
+    body:has(#be-booking-form) .main-content {
+        padding-left: 0;
+        padding-right: 0;
+        overflow-x: hidden;
+    }
+    
+    /* Đảm bảo các phần tử con trong booking form không bị sát viền */
+    #be-booking-form * {
+        box-sizing: border-box;
+    }
+    
+    /* Đảm bảo các container bên trong có padding */
+    #be-booking-form iframe,
+    #be-booking-form div {
+        max-width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body:has(#be-booking-form) .main-content {
+        padding-left: 0;
+        padding-right: 0;
+        overflow-x: hidden;
+    }
+}
+
+body:has(#be-booking-form) .footer-map,
+body:has(#be-booking-form) .floating-container,
+body:has(#be-booking-form) .social-icons {
+    display: none !important;
+}
+
+#block-search,
+#block-search * {
+    box-sizing: border-box;
+}
+
+#block-search {
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+#block-search.block-search--main {
+    position: absolute;
+    z-index: 1;
+    right: max(100px, calc(185px - ((1920px - 100vw) * 0.5)));
+    top: 250px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+}
+
+.be-container {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+#block-search.block-search--contact {
+    margin: 25px auto 30px auto;
+}
+
+#block-search.block-search--policy {
+    margin: -32px auto 32px auto;
+}
+
+#block-search.block-search--about-us,
+#block-search.block-search--support {
+    margin: 60px auto 0 auto;
+}
+
+#block-search.block-search--about-inner {
+    margin-bottom: 10px;
+}
+
+.search-title .btn-booking {
+    display: none;
+}
+
+iframe[id*='tlFrame'] {
+    color-scheme: none;
+}
+
+@media screen and (max-width: 1100px) {
+    #block-search.block-search--main {
+        position: static;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #block-search.block-search--about-us {
+        margin: 0 auto;
+    }
+}

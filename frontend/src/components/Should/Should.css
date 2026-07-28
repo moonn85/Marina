@@ -1,0 +1,176 @@
+.vtg-container {
+  text-align: center;
+  padding: 40px 0;
+  background-color: white;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+}
+
+.vtg-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.vtg-description {
+  color: gray;
+  max-width: 1200px;
+  margin: 10px auto;
+}
+
+.vtg-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.vtg-feature-card {
+  text-align: center;
+  width: 100%;
+  height: 200px;
+  border: 1px solid #3b82f6;
+}
+
+.vtg-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  color: #3b82f6;
+}
+
+.vtg-icon {
+  font-size: 30px;
+}
+
+.vtg-feature-title {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.vtg-feature-description {
+  color: gray;
+  margin-top: 5px;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .vtg-container {
+    padding: 30px 15px;
+  }
+
+  .vtg-title {
+    font-size: 1.3rem;
+  }
+
+  .vtg-description {
+    font-size: 14px;
+  }
+
+  .vtg-grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+
+  .vtg-feature-card {
+    height: 180px;
+  }
+
+  .vtg-icon {
+    font-size: 26px;
+  }
+}
+
+/* Mobile (Dưới 768px) */
+@media (max-width: 768px) {
+  .vtg-container {
+    padding: 20px 10px;
+  }
+
+  .vtg-title {
+    font-size: 1.2rem;
+  }
+
+  .vtg-description {
+    font-size: 14px;
+  }
+
+  .vtg-grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
+  }
+
+  .vtg-feature-card {
+    height: 184px;
+    padding: 15px;
+  }
+
+  .vtg-icon {
+    font-size: 24px;
+  }
+  .ant-card-body{
+    padding: 0 !important;
+  
+  }
+  .vtg-feature-title{
+    font-size: 16px;
+    height: 36px;
+  }
+  .vtg-feature-description{
+    height: 54px;
+  }
+}
+
+/* Mobile nhỏ (Dưới 480px) */
+@media (max-width: 480px) {
+  .ant-card-body{
+    padding: 15px 0 0 0 !important;
+  }
+  .vtg-container {
+    padding: 5px 5px;
+  }
+
+  .vtg-title {
+    font-size: 1rem;
+  }
+
+  .vtg-description {
+    font-size: 13px;
+  }
+
+  .vtg-grid-container {
+    grid-template-columns: repeat( minmax(200px, 1fr));
+    gap: 5px;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 400px;
+    place-items: center;
+  }
+
+  .vtg-feature-card {
+    height: 184px;
+    width: 184px;
+    margin-bottom: 5px;
+  }
+  .vtg-feature-card h3{
+    font-size: 14px;
+  }
+
+  .vtg-feature-card p{
+    font-size: 14px;
+  }
+
+  .vtg-icon {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 376px) {
+  .vtg-feature-card{
+    height: 184px;
+    width: 173px;
+  }
+  .vtg-grid-container{
+    place-items: center;
+  }
+}

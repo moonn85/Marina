@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and API endpoints
+Disallow: /admin/
+Disallow: /api/
+
+# XML Sitemap
+Sitemap: https://anstay.com.vn/sitemap.xml

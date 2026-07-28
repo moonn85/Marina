@@ -1,0 +1,20 @@
+export const AppMessage = {
+  PASSWORD_RESET_SUCCESS: 'Password has been reset successfully',
+  PASSWORD_RESET_LINK_SENT:
+    'Password reset link has been sent to your email. Please check your email to proceed.',
+  VERIFY_EMAIL_SUCCESS: 'Email verified successfully',
+  RESEND_EMAIL_SUCCESS: 'Verification email resent successfully',
+  PROFILE_UPDATED: 'Profile updated successfully',
+  LOGIN_SUCCESS: 'Login successful',
+  LOGOUT_SUCCESS: 'Logout successful',
+  REGISTER_SUCCESS: 'Register successful',
+  PASSWORD_CHANGED_SUCCESS: 'Change password successfully',
+  SUCCESS_RESPONSE: 'Sucess',
+  INTERNAL_SERVER_ERROR: 'Internal server error',
+  DELETED_SUCCESSFULLY: 'Deleted successfully',
+  UPDATED_SUCCESSFULLY: 'Updated successfully',
+  ADDED_SUCCESSFULLY: 'Added successfully',
+  OTP_REQUESTED_SUCCESSFULLY: 'OTP requested successfully',
+  OTP_VERIFIED_SUCCESSFULLY: 'OTP verified successfully',
+  UPLOADED_SUCCESSFULLY: 'Uploaded successfully',
+};

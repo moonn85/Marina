@@ -1,0 +1,171 @@
+.aboutcp {
+  margin-top: 80px;
+}
+
+.banner-img {
+  position: relative;
+}
+
+.banner-des {
+  color: white;
+  position: absolute;
+  bottom: 30px;
+  left: 18%;
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.banner-img img {
+  width: 100%;
+  height: 297px;
+  object-fit: cover;
+  transition: filter 0.3s ease-in-out;
+  filter: brightness(50%);
+}
+
+.info-pair {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.info-pair>.ant-typography {
+  margin: 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+.info-pair>h5 {
+  min-width: 280px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-pair>h5>span {
+  margin-left: auto;
+}
+
+.info-pair>span {
+  flex: 1;
+  padding-left: 10px;
+}
+
+.description-box {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .aboutcp {
+    margin-top: 100px;
+    /* Giảm margin cho tablet */
+  }
+
+  .banner-des {
+    font-size: 32px;
+    /* Giảm kích thước chữ banner */
+    bottom: 20px;
+    left: 10%;
+    width: 80%;
+    text-align: center;
+  }
+
+  .banner-img img {
+    height: 250px;
+    /* Giảm chiều cao ảnh */
+  }
+
+  /* Điều chỉnh bố cục info-pair */
+  .info-pair {
+    flex-direction: column;
+    /* Chuyển thành cột trên tablet */
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .info-pair>.ant-typography {
+    font-size: 16px;
+    /* Giảm size chữ */
+  }
+
+  .description-box {
+    padding: 15px;
+    text-align: center;
+  }
+}
+
+/* Responsive cho điện thoại (max-width: 480px) */
+@media (max-width: 480px) {
+  .aboutcp {
+    margin-top: 100px;
+    max-width: 480px;
+    width: 100%;
+  }
+
+  .banner-des {
+    font-size: 30px;
+    /* Slightly increase font size for readability */
+    bottom: 10px;
+    left: -20%;
+    /* Adjust alignment */
+    width: 90%;
+    text-align: center;
+  }
+
+  .banner-img img {
+    height: 180px;
+    /* Further reduce image height */
+    max-width: 100%;
+    /* Ensure the image fits within the container */
+    height: auto;
+    /* Maintain aspect ratio */
+    object-fit: cover;
+    /* Ensure proper cropping */
+  }
+
+  .info-pair {
+    flex-direction: row;
+    /* Cột trên điện thoại */
+    align-items: flex-start;
+    gap: 5px;
+    /* Giữ khoảng cách đều giữa các phần tử */
+  }
+
+  .info-pair>.ant-typography {
+    font-size: 16px;
+    /* Further reduce font size */
+  }
+
+  .description-box {
+    padding: 8px;
+    /* Reduce padding */
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .info-pair {
+    margin-left: 25px;
+    justify-content: space-around;
+  }
+
+  .banner-des {
+    margin: 0 15px;
+  }
+
+  .info-pair>h5 {
+    width: 100px;
+    /* Giảm kích thước chữ */
+  }
+
+  .info-pair>span {
+    width: 300px;
+    padding-right: 24px;
+  }
+
+  .description-box {
+    width: 100%;
+    max-width: 400px;
+  }
+}

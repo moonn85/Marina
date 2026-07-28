@@ -1,0 +1,107 @@
+/* Tổng thể */
+.article-page {
+  background-color: #f8f9fa;
+  padding-bottom: 40px;
+  font-family: Arial, sans-serif;
+  margin-top: 100px;
+}
+
+/* === BANNER === */
+.banner-section {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5),
+    /* trái tối */ rgba(0, 0, 0, 0.05),
+    /* giữa sáng */ rgba(0, 0, 0, 0.5) /* phải tối */
+  );
+  z-index: 1;
+}
+
+.banner-text-wrapper {
+  position: absolute;
+  top: 50%;
+
+  width: 100%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.banner-text {
+  max-width: 1140px;
+  width: 100%;
+  /* padding: 0 20px; */
+  color: white;
+  text-align: left;
+}
+.banner-text h1 {
+  font-size: 28px;
+  margin: 0 0 10px 0;
+}
+
+.banner-text p {
+  font-size: 18px;
+  margin: 0;
+}
+
+/* === NỘI DUNG BÀI VIẾT === */
+.article-content {
+  padding: 40px 20px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.article-content h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #111827;
+}
+
+.article-content p {
+  font-size: 18px;
+  color: #4b5563;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.article-extra-img {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 6px;
+  object-fit: cover;
+  max-height: 400px;
+}
+
+/* === 404 Bài viết không tồn tại === */
+.not-found {
+  text-align: center;
+  color: #999;
+  padding: 80px 20p;
+}

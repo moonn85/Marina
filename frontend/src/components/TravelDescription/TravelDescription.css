@@ -1,0 +1,161 @@
+.travel-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.custom-tabs .ant-tabs-nav {
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: none;
+}
+
+.tab-button {
+  background-color: #444;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+
+.tab-button:not(.active) {
+  background-color: #444;
+}
+
+.travel-card {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.88); /* Consistent text color for all tab panes */
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 16px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+.comment-item {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 12px;
+}
+
+.comment-item h4 {
+  margin: 0;
+  color: #333;
+}
+
+.comment-item small {
+  color: #666;
+  font-size: 0.85em;
+}
+
+.day-itinerary {
+  margin-bottom: 24px;
+}
+
+.day-title {
+  color: #1890ff;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  width: 100px;
+  overflow: hidden; 
+  box-sizing: border-box;
+}
+
+.activity {
+  margin-bottom: 8px;
+  padding-left: 20px;
+}
+
+.activity strong {
+  color: #333;
+}
+
+.custom-meta {
+  margin: 5px auto;
+  text-align: left;
+}
+.custom-meta .ant-list-item-meta-description {
+  font-size: 16px;
+}
+.list-title {
+  font-size: 20px;
+}
+.list-date {
+  float: right;
+  font-size: 16px;
+}
+
+.day-itinerary {
+  display: flex;
+}
+
+.list-interary {
+  text-align: left;
+}
+.activity {
+  display: flex;
+  align-items: flex-start; /* Giúp mô tả không bị đẩy lệch */
+  gap: 8px;
+}
+.activity strong {
+  width: 60px; /* Cố định độ rộng cho phần thời gian */
+  text-align: right; /* Canh phải để đồng nhất */
+  flex-shrink: 0; /* Giữ nguyên kích thước, không bị co lại */
+}
+.activity span {
+  flex: 1; /* Phần mô tả tự động giãn ra */
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 480px) {
+  .travel-container {
+    width: 100%;
+    max-width: 463px;
+    margin: 0;
+    padding: 0;
+  }
+  .tab-button {
+    width: 100%; /* Để tab trải dài toàn bộ chiều ngang */
+    text-align: center;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr; /* Chỉ hiển thị 1 ảnh trên mỗi hàng */
+  }
+
+  .gallery-grid img {
+    height: auto; /* Để hình ảnh giữ tỷ lệ */
+  }
+
+  .comment-item {
+    font-size: 13px;
+  }
+}

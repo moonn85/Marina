@@ -1,0 +1,245 @@
+.tour-detail-container {
+  max-width: 1200px;
+  margin: 150px auto 20px auto;
+  padding: 0 8px;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  pointer-events: auto;
+}
+
+.main-image-container {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ...Sao chép các styles liên quan đến navigation và thumbnails từ Tour.css... */
+
+.tour-info {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 100px;
+  user-select: none;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  -o-user-select: none !important;
+  user-select: none !important;
+  pointer-events: auto !important;
+}
+
+.tour-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  user-select: none;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  -o-user-select: none !important;
+  user-select: none !important;
+  pointer-events: auto !important;
+}
+
+.tour-details div {
+  font-size: 16px;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  -o-user-select: none !important;
+  user-select: none !important;
+  pointer-events: auto !important;
+}
+
+.tour-price {
+  font-size: 20px !important;
+  font-weight: bold;
+  color: #e65100 !important;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  -o-user-select: none !important;
+  user-select: none !important;
+  pointer-events: auto !important;
+}
+
+.booking-button {
+  width: 100%;
+  margin-top: 20px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #1890ff;
+}
+
+.contact-button {
+  width: 100%;
+  margin-top: 10px;
+  height: 50px;
+  font-size: 16px;
+  border: 2px solid #1890ff;
+  color: #1890ff;
+}
+
+.contact-button:hover {
+  border-color: #40a9ff;
+  color: #40a9ff;
+}
+
+/* Remove these schedule-related styles */
+.schedule-section,
+.schedule-day,
+.schedule-details,
+.schedule-detail-item {
+  display: none;
+}
+@media (max-width: 1024px) {
+  .tour-detail-container {
+    margin: 70px auto;
+    padding: 0 16px;
+  }
+
+  .main-image-container {
+    height: 400px; /* Giảm chiều cao ảnh */
+  }
+
+  .tour-info {
+    position: sticky;
+    top: 80px; /* Giảm khoảng cách sticky */
+    padding: 16px;
+  }
+
+  .tour-details {
+    padding: 10px; /* Giảm padding */
+  }
+
+  .tour-details div {
+    font-size: 14px; /* Giảm kích thước font */
+  }
+
+  .tour-price {
+    font-size: 18px !important;
+  }
+
+  .booking-button,
+  .contact-button {
+    height: 45px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tour-detail-container {
+    margin: 40px auto;
+  }
+
+  .main-image-container {
+    height: 350px; /* Giảm chiều cao ảnh */
+  }
+
+  .tour-info {
+    position: relative; /* Không cần sticky trên mobile */
+    top: 0;
+    padding: 20px;
+  }
+
+  .tour-details {
+    padding: 15px; /* Giảm padding */
+  }
+
+  .tour-details > h2 {
+    font-size: 18px;
+  }
+  .tour-details div {
+    font-size: 14px; /* Giảm kích thước font */
+  }
+
+  .tour-price {
+    font-size: 18px !important;
+  }
+
+  .booking-button,
+  .contact-button {
+    height: 45px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* .ant-col-14 {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  } */
+
+  .main-image-container {
+    width: 100%;
+  }
+  .tour-detail-container {
+    margin: 110px auto 20px auto;
+    max-width: 464px;
+    padding: 0 8px;
+    width: 100%;
+  }
+
+  .thumbnail-container {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    overflow-x: auto;
+  }
+  /* .ant-col-10 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  } */
+  .ant-modal-content {
+    width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 414px) {
+  .tour-detail-container {
+    max-width: 384px;
+  }
+  .ant-modal-content {
+    width: 90%;
+  }
+}
+
+.ant-typography {
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  -o-user-select: none !important;
+  user-select: none !important;
+  pointer-events: auto !important;
+}

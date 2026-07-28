@@ -1,0 +1,314 @@
+:root {
+  --red: #e04a4a;
+  --line: #d74242;
+  --text: #fff;
+}
+
+.orgWrap {
+  max-width: 1400px;
+  margin: 70px auto 40px;
+  padding: 10px 16px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+
+.orgTitle {
+  margin: 0 0 14px;
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--red);
+  text-align: center;
+}
+
+.orgViewport {
+  width: 100%;
+  overflow: hidden;
+  /* không có con lăn */
+  display: flex;
+  justify-content: center;
+}
+
+.orgCanvas {
+  transform-origin: top center;
+  will-change: transform;
+  padding: 10px 40px 30px;
+  /* chừa mép để line không bị “cụt” */
+}
+
+.tree,
+.tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tree {
+  display: flex;
+  justify-content: center;
+}
+
+.nodeWrap {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+/* ====== LAYOUT CHILDREN ====== */
+.children {
+  display: flex;
+  justify-content: center;
+  gap: var(--gap, 28px);
+  position: relative;
+  padding-top: 34px;
+  /* khoảng cho line */
+}
+
+.children>li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ====== LINE SYSTEM (không đứt) ======
+   Vẽ 1 đường ngang cho cả hàng con:
+   left/right = nửa width của node để line chạy đúng vào tâm các node.
+*/
+/* .childrenTop {
+  --nodeW: 210px;
+  --gap: 28px;
+  --pad: calc(var(--nodeW) / 2 - 2500000px);
+  /* giảm 25px mỗi bên */
+/* } */
+*/ .childrenTall {
+  --nodeW: 140px;
+  --gap: 22px;
+}
+
+/* đường ngang của hàng con */
+/* .hasChildren>.children::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: calc(var(--nodeW) / 2);
+  right: calc(var(--nodeW) / 2);
+  border-top: 3px solid var(--line);
+} */
+
+/* nét dọc từ node cha xuống đường ngang */
+.hasChildren>.nodeWrap::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 2px);
+  transform: translateX(-50%);
+  height: 18px;
+  border-left: 3px solid var(--line);
+}
+
+/* nét dọc từ đường ngang xuống từng node con */
+.hasChildren>.children>li::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  transform: translateX(-50%);
+  height: 20px;
+  border-left: 3px solid var(--line);
+}
+
+/* ====== NODES ====== */
+.node {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--red);
+  color: var(--text);
+  font-weight: 800;
+  border-radius: 14px;
+  padding: 12px 18px;
+  line-height: 1.15;
+  text-align: center;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, .10);
+}
+
+.nodeTop {
+  min-width: 240px;
+}
+
+.nodeSmall {
+  min-width: 210px;
+  font-size: 16px;
+  padding: 14px 18px;
+}
+
+.nodeTall {
+  min-width: 140px;
+  font-size: 16px;
+  padding: 16px 12px;
+}
+
+/* ===== MOBILE LIST ===== */
+.orgMobile {
+  display: grid;
+  gap: 12px;
+}
+
+.mHead {
+  justify-self: center;
+  width: min(320px, 100%);
+  text-align: center;
+}
+
+.mGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.mCard {
+  background: var(--red);
+  color: var(--text);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, .10);
+}
+
+.mTitle {
+  font-weight: 800;
+}
+
+.mList {
+  margin: 10px 0 0 18px;
+  padding: 0;
+}
+
+.mList li {
+  margin: 6px 0;
+}
+
+@media (max-width: 640px) {
+  .orgTitle {
+    font-size: 26px;
+  }
+}
+
+.orgWrap ul {
+  display: block !important;
+}
+
+.orgWrap .children {
+  display: flex !important;
+}
+
+.orgWrap .children>li {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* .orgWrap {
+    --junctionTop: -23px;
+    --downLen: 24px;
+    --upLen: 19px;
+  }
+
+  .orgWrap .hasChildren>.children::before {
+    top: var(--junctionTop);
+  }
+
+  .orgWrap .hasChildren>.children>li::before {
+    top: calc(var(--downLen) * -1);
+    height: var(--downLen);
+  }
+
+  .orgWrap .hasChildren>.nodeWrap::after {
+    height: var(--upLen);
+  } */
+/* ===== FIX LINES: 1 nguồn sự thật ===== */
+
+/* Chừa mép để không bị cắt (nếu bạn vẫn overflow hidden) */
+.orgViewport {
+  padding: 0 0px;
+}
+
+.orgCanvas {
+  padding: 10px 10px 30px;
+}
+
+/* Set thông số theo từng level */
+.childrenTop {
+  --gap: 28px;
+  --pad: -118px;
+  /* line ngang level 1 dài/ngắn ở đây */
+  --junctionTop: -23px;
+  --downLen: 24px;
+  --upLen: 16px;
+}
+
+.childrenTall {
+  --gap: 22px;
+  --pad: 70px;
+  /* line ngang level 2 */
+  --junctionTop: -23px;
+  --downLen: 24px;
+  --upLen: 16px;
+}
+
+/* LINE ngang */
+.hasChildren>.children::before {
+  content: "";
+  position: absolute;
+  top: var(--junctionTop, 10px);
+  left: var(--pad, 70px);
+  right: var(--pad, 70px);
+  border-top: 3px solid var(--line);
+}
+
+/* LINE dọc từ cha xuống ngang */
+.hasChildren>.nodeWrap::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 2px);
+  transform: translateX(-50%);
+  height: var(--upLen, 16px);
+  border-left: 3px solid var(--line);
+}
+
+/* LINE dọc từ ngang xuống con */
+.hasChildren>.children>li::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(var(--downLen, 24px) * -1);
+  transform: translateX(-50%);
+  height: var(--downLen, 24px);
+  border-left: 3px solid var(--line);
+}
+
+/* ===== FIX: line không đè lên chữ ===== */
+
+/* tạo layer cho hàng children */
+.hasChildren>.children {
+  position: relative;
+  z-index: 0;
+}
+
+/* line luôn nằm dưới */
+.hasChildren>.children::before,
+.hasChildren>.children>li::before,
+.hasChildren>.nodeWrap::after {
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* node luôn nằm trên line */
+.nodeWrap {
+  position: relative;
+  z-index: 5;
+}
+
+.node {
+  position: relative;
+  z-index: 6;
+}

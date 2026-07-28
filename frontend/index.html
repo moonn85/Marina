@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+  <!-- Google tag (gtag.js) - delayed so analytics does not compete with LCP resources -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    (function () {
+      var analyticsTimer;
+
+      function cleanupAnalyticsTriggers() {
+        clearTimeout(analyticsTimer);
+        window.removeEventListener('pointerdown', scheduleAnalytics);
+        window.removeEventListener('keydown', scheduleAnalytics);
+        window.removeEventListener('scroll', scheduleAnalytics);
+        window.removeEventListener('touchstart', scheduleAnalytics);
+      }
+
+      function loadAnalytics() {
+        cleanupAnalyticsTriggers();
+        if (window.__anstayAnalyticsLoaded) return;
+        window.__anstayAnalyticsLoaded = true;
+
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-H89XYWWVD8';
+        document.head.appendChild(script);
+
+        gtag('js', new Date());
+        gtag('config', 'G-H89XYWWVD8');
+      }
+
+      function scheduleAnalytics() {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadAnalytics, { timeout: 2500 });
+        } else {
+          setTimeout(loadAnalytics, 1200);
+        }
+      }
+
+      window.__loadAnstayAnalytics = loadAnalytics;
+      window.addEventListener('pointerdown', scheduleAnalytics, { once: true, passive: true });
+      window.addEventListener('keydown', scheduleAnalytics, { once: true });
+      window.addEventListener('scroll', scheduleAnalytics, { once: true, passive: true });
+      window.addEventListener('touchstart', scheduleAnalytics, { once: true, passive: true });
+
+      window.addEventListener('load', function () {
+        analyticsTimer = setTimeout(scheduleAnalytics, 12000);
+      }, { once: true });
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Cache Version Control - Xóa cache khi có version mới -->
+  <script>
+    (function () {
+      // ⚠️ QUAN TRỌNG: Tăng version này mỗi khi deploy version mới
+      const APP_VERSION = '1.0.1';
+      const VERSION_KEY = 'app_cache_version';
+      const CACHE_TIMESTAMP_KEY = 'app_cache_timestamp';
+
+      const storedVersion = localStorage.getItem(VERSION_KEY);
+      const storedTimestamp = localStorage.getItem(CACHE_TIMESTAMP_KEY);
+
+      // Kiểm tra nếu có version mới hoặc cache quá cũ (> 7 ngày)
+      const shouldClearCache =
+        (storedVersion && storedVersion !== APP_VERSION) ||
+        (storedTimestamp && Date.now() - parseInt(storedTimestamp) > 7 * 24 * 60 * 60 * 1000);
+
+      if (shouldClearCache || !storedVersion) {
+        // Xóa Service Worker cache
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function (registrations) {
+            registrations.forEach(function (registration) {
+              registration.unregister();
+            });
+          });
+        }
+
+        // Xóa Cache API
+        if ('caches' in window) {
+          caches.keys().then(function (names) {
+            names.forEach(function (name) {
+              caches.delete(name);
+            });
+          });
+        }
+
+        // Xóa localStorage cũ (giữ lại một số keys quan trọng nếu cần)
+        const importantKeys = ['app_cache_version', 'app_cache_timestamp', 'hasSelectedLanguage'];
+        const keysToKeep = {};
+        importantKeys.forEach(function (key) {
+          const value = localStorage.getItem(key);
+          if (value) keysToKeep[key] = value;
+        });
+        localStorage.clear();
+        Object.keys(keysToKeep).forEach(function (key) {
+          if (key !== VERSION_KEY && key !== CACHE_TIMESTAMP_KEY) {
+            localStorage.setItem(key, keysToKeep[key]);
+          }
+        });
+
+        // Lưu version và timestamp mới
+        localStorage.setItem(VERSION_KEY, APP_VERSION);
+        localStorage.setItem(CACHE_TIMESTAMP_KEY, Date.now().toString());
+
+        // Nếu có version mới, force reload
+        if (storedVersion && storedVersion !== APP_VERSION) {
+          // Thêm timestamp vào URL để bypass browser cache
+          const url = new URL(window.location.href);
+          url.searchParams.set('_v', APP_VERSION);
+          url.searchParams.set('_t', Date.now());
+          window.location.replace(url.toString());
+          return;
+        }
+      } else {
+        // Cập nhật timestamp
+        localStorage.setItem(CACHE_TIMESTAMP_KEY, Date.now().toString());
+      }
+    })();
+  </script>
+
+  <link rel="icon" type="image/png"
+    href="https://res.cloudinary.com/drpqrn5jz/image/upload/v1763454528/Anstay_wra7ap.png" />
+  <!-- SEO Meta Tags - Default (Helmet sẽ thêm meta khi page load — để tránh duplicate, xoá meta description mặc định ở đây) -->
+  <meta name="keywords"
+    content="anstay, căn hộ hạ long, du lịch hạ long, khách sạn hạ long, vịnh hạ long, nghỉ dưỡng" />
+
+  <!-- Additional SEO -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="author" content="ANSTAY" />
+  <meta name="geo.position" content="20.9590;107.0436" />
+  <meta name="date" content="2026-05-15" />
+  <meta name="last-modified" content="2026-05-15" />
+  <meta name="geo.region" content="VN-QN" />
+  <meta name="geo.placename" content="Hạ Long, Quảng Ninh, Việt Nam" />
+
+  <!-- Structured Data for Google - Enhanced Hotel Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Hotel",
+    "name": "ANSTAY Residence",
+    "description": "Căn hộ du lịch cao cấp tại Vịnh Hạ Long với view biển tuyệt đẹp",
+    "image": [
+      "https://res.cloudinary.com/drpqrn5jz/image/upload/f_webp,q_75/v1763450336/halong-bay-tour_mpTU2_t0fcmv.jpg",
+      "https://res.cloudinary.com/drpqrn5jz/image/upload/f_webp,q_auto/Anstay_wra7ap.png"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Hạ Long",
+      "addressRegion": "Quảng Ninh",
+      "addressCountry": "VN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "20.9590",
+      "longitude": "107.0436",
+      "elevation": "0"
+    },
+    "url": "https://anstay.com.vn",
+    "telephone": "+84916612772",
+    "priceRange": "$$",
+    "amenityFeature": [
+      { "@type": "Text", "name": "Air Conditioning" },
+      { "@type": "Text", "name": "Free WiFi" },
+      { "@type": "Text", "name": "24/7 Front Desk" },
+      { "@type": "Text", "name": "Sea View" },
+      { "@type": "Text", "name": "Bay View" },
+      { "@type": "Text", "name": "Restaurant" },
+      { "@type": "Text", "name": "Professional Housekeeping" }
+    ],
+    "areaServed": {
+      "@type": "Place",
+      "name": "Hạ Long Bay, Quảng Ninh, Vietnam",
+      "geo": {
+        "@type": "GeoShape",
+        "box": "20.8 107.0 21.0 107.1"
+      }
+    },
+    "petsAllowed": true,
+    "checkInTime": "14:00",
+    "checkOutTime": "11:00",
+    "rating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "ratingCount": "100"
+    }
+  }
+  </script>
+
+  <!-- FAQ Schema for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "ANSTAY Residence ở đâu?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ANSTAY Residence là căn hộ du lịch tại Hạ Long, Quảng Ninh, Việt Nam. Địa điểm chiến lược tại Vịnh Hạ Long với tiện nghi cao cấp."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ANSTAY có view biển không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Có, ANSTAY Residence nằm tại Vịnh Hạ Long với view biển hoặc view thành phố. Bạn có thể chọn các phòng với view biển khi đặt phòng."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Giá phòng tại ANSTAY như thế nào?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ANSTAY cung cấp các gói giá cạnh tranh với nhiều ưu đãi. Khách hàng có thể tìm giá tốt nhất trên nền tảng đặt phòng của chúng tôi."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ANSTAY có những tiện nghi nào?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ANSTAY Residence cung cấp các tiện nghi hiện đại bao gồm: căn hộ thoải mái, vị trí tại Vịnh Hạ Long, dịch vụ chuyên nghiệp và hỗ trợ khách hàng 24/7."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Làm thế nào để đặt phòng tại ANSTAY?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bạn có thể đặt phòng trực tuyến trên website ANSTAY hoặc liên hệ trực tiếp qua số điện thoại +84916612772 để được hỗ trợ đặt phòng."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ANSTAY phục vụ những loại khách nào?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ANSTAY phục vụ khách du lịch cá nhân, gia đình, nhóm và các sự kiện. Chúng tôi cung cấp dịch vụ chuyên nghiệp cho tất cả khách hàng."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hạ Long Bay nổi tiếng về cái gì?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hạ Long Bay (Vịnh Hạ Long) là kỳ quan thiên nhiên thế giới, nổi tiếng với cảnh biển tuyệt đẹp, các đảo đá vôi và là điểm đến du lịch hàng đầu của Việt Nam."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ANSTAY hoạt động mấy giờ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ANSTAY Residence hoạt động quanh năm. Thời gian check-in từ 14:00 và check-out lúc 11:00. Liên hệ để sắp xếp các yêu cầu đặc biệt."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Tại sao nên chọn ANSTAY?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ANSTAY cung cấp vị trí tuyệt vời tại Vịnh Hạ Long, dịch vụ chuyên nghiệp 24/7, giá cạnh tranh, và trải nghiệm lưu trú chất lượng cao."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Có những loại phòng nào tại ANSTAY?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ANSTAY cung cấp: Phòng Tiêu Chuẩn, Phòng Deluxe, Phòng Superior và Suite Executive. Mỗi phòng được thiết kế hiện đại và thoải mái."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Khoảng cách từ ANSTAY đến các điểm du lịch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ANSTAY nằm tại trung tâm Hạ Long, gần Sun World, Old Quarter và các bến tàu du lịch Vịnh Hạ Long. Vị trí ideal để khám phá."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Có hỗ trợ đặt tour hay dịch vụ khác không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Có, ANSTAY hỗ trợ đặt tour Vịnh Hạ Long, dạo thành phố, và các dịch vụ du lịch. Liên hệ dịch vụ khách hàng để được tư vấn."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Có giữ hành lý sau check-out không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Có, ANSTAY cung cấp dịch vụ giữ hành lý. Liên hệ lễ tân hoặc gọi +84916612772 để sắp xếp chi tiết."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- LocalBusiness Schema - Fix Entity Ambiguity & National Visibility -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "ANSTAY Residence",
+    "description": "Căn hộ du lịch cao cấp tại Hạ Long, Quảng Ninh với vị trí tuyệt vời tại Vịnh Hạ Long",
+    "url": "https://anstay.com.vn",
+    "telephone": "+84916612772",
+    "address": {
+      "@type": "PostalAddress",
+      "@addressCountry": "VN",
+      "addressRegion": "Quảng Ninh",
+      "addressLocality": "Hạ Long"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "20.9590",
+      "longitude": "107.0436"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "priceRange": "$$",
+    "image": "https://res.cloudinary.com/drpqrn5jz/image/upload/f_webp,q_auto/Anstay_wra7ap.png",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "ratingCount": "100"
+    }
+  }
+  </script>
+
+  <!-- Offer/Product Schema - Fix Narrow Discovery Coverage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ApartmentComplex",
+    "name": "ANSTAY Residence",
+    "url": "https://anstay.com.vn",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Hạ Long",
+      "addressRegion": "Quảng Ninh",
+      "addressCountry": "VN"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Phòng Tiêu Chuẩn",
+        "description": "Phòng đơn hoặc đôi thoải mái với tiện nghi cơ bản và hiện đại",
+        "priceCurrency": "VND",
+        "price": "500000",
+        "priceValidUntil": "2026-12-31",
+        "availability": "InStock"
+      },
+      {
+        "@type": "Offer",
+        "name": "Phòng Deluxe",
+        "description": "Phòng rộng hơn với view biển và tiện nghi nâng cao",
+        "priceCurrency": "VND",
+        "price": "800000",
+        "priceValidUntil": "2026-12-31",
+        "availability": "InStock"
+      },
+      {
+        "@type": "Offer",
+        "name": "Phòng Superior",
+        "description": "Phòng cao cấp với view biển tuyệt đẹp và dịch vụ ưu tiên",
+        "priceCurrency": "VND",
+        "price": "1200000",
+        "priceValidUntil": "2026-12-31",
+        "availability": "InStock"
+      },
+      {
+        "@type": "Offer",
+        "name": "Suite Executive",
+        "description": "Suite sang trọng với phòng khách riêng và dịch vụ concierge",
+        "priceCurrency": "VND",
+        "price": "1800000",
+        "priceValidUntil": "2026-12-31",
+        "availability": "InStock"
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema - Better Navigation & SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Trang chủ",
+        "item": "https://anstay.com.vn"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Khách sạn & Căn hộ Hạ Long",
+        "item": "https://anstay.com.vn/apartments"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "ANSTAY Residence",
+        "item": "https://anstay.com.vn"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Critical CSS inline để reduce render-blocking -->
+  <style>
+    /* Hero Section Critical CSS */
+    .hero-image {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
+      /* 16:9 aspect ratio */
+      overflow: hidden;
+      border-radius: 12px;
+      max-height: 675px;
+    }
+
+    .hero-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-content {
+      text-align: center;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .about-content .hero-section {
+      margin-bottom: 40px;
+    }
+
+  </style>
+
+  <!-- Preconnect to external domains for faster loading - Priority order -->
+  <link rel="preconnect" href="https://cdn.tripspoint.com" />
+  <link rel="dns-prefetch" href="https://cdn.tripspoint.com" />
+  <link rel="preconnect" href="https://api.anstay.com.vn" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://res.cloudinary.com" />
+  <link rel="preconnect" href="https://wsrv.nl" />
+  <link rel="dns-prefetch" href="https://i.ibb.co" />
+  <link rel="preconnect" href="https://upload.wikimedia.org" />
+  <link rel="preload" href="https://res.cloudinary.com/drpqrn5jz/image/upload/f_webp,q_auto/Anstay_wra7ap.png"
+    as="image" type="image/webp" />
+  <!-- Hero video is deferred (loads after page load); only preload its lightweight poster -->
+  <link rel="preload" href="/videos/anstaylager-poster.webp" as="image" type="image/webp" />
+  <!-- Google Fonts - Loaded async -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"
+    media="print" onload="this.media='all'" />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  </noscript>
+
+  <!-- PRIMARY META (tùy chỉnh cho homepage) -->
+  <title>ANSTAY - Trang web chính thức | Đặt căn hộ & khách sạn Hạ Long</title>
+  <!-- canonical mặc định cho homepage; script phía dưới sẽ cập nhật canonical động khi SPA thay đổi route -->
+  <link rel="canonical" id="canonicalLink" href="https://anstay.com.vn/" />
+  <!-- Preload critical resources -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" />
+
+  <!-- Open Graph -->
+  <meta property="og:locale" content="vi_VN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ANSTAY - Trang web chính thức | Đặt căn hộ & khách sạn Hạ Long" />
+  <meta property="og:description" content="Ưu đãi tốt nhất cho căn hộ du lịch Hạ Long. Đặt phòng nhanh, tiết kiệm." />
+  <meta property="og:url" content="https://anstay.com.vn/" />
+  <meta property="og:image"
+    content="https://res.cloudinary.com/drpqrn5jz/image/upload/f_webp,q_auto/Anstay_wra7ap.png" />
+  <meta property="og:image:alt" content="ANSTAY VN logo" />
+  <meta property="og:site_name" content="ANSTAY" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@AnstayVN" />
+  <meta name="twitter:title" content="ANSTAY - Trang web chính thức | Đặt căn hộ & khách sạn Hạ Long" />
+  <meta name="twitter:description"
+    content="Anstay VN — Dịch vụ lưu trú, quản lý & cho thuê căn hộ du lịch tại Hạ Long. Đặt phòng dễ dàng, hỗ trợ vận hành chuyên nghiệp." />
+  <meta name="twitter:image"
+    content="https://res.cloudinary.com/drpqrn5jz/image/upload/f_webp,q_auto/Anstay_wra7ap.png" />
+
+  <!-- alternate / hreflang: site hiện chỉ có bản tiếng Việt thực sự.
+       Đã bỏ en/ko/zh vì các URL đó canonical về / (chưa có trang riêng) gây tín hiệu đa ngôn ngữ sai.
+       Khi có trang /en, /ko, /zh thật thì thêm lại. -->
+  <link rel="alternate" href="https://anstay.com.vn/" hreflang="vi" />
+  <link rel="alternate" href="https://anstay.com.vn/" hreflang="x-default" />
+
+  <!-- Structured data: Organization + WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://anstay.com.vn/#organization",
+        "name": "ANSTAY VN",
+        "url": "https://anstay.com.vn",
+        "logo": "https://res.cloudinary.com/drpqrn5jz/image/upload/f_webp,q_auto/Anstay_wra7ap.png",
+        "image": "https://res.cloudinary.com/drpqrn5jz/image/upload/f_webp,q_auto/Anstay_wra7ap.png",
+        "description": "ANSTAY VN - Hệ thống vận hành căn hộ du lịch A La Carte Hạ Long & các khu nghỉ dưỡng Việt Nam.",
+        "sameAs": [
+          "https://www.facebook.com/Anstayalacarte",
+          "https://www.youtube.com/@AnstayVN",
+          "https://www.instagram.com/anstay.vn"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+84384945614",
+          "contactType": "customer service",
+          "areaServed": "VN"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://anstay.com.vn/#website",
+        "url": "https://anstay.com.vn",
+        "name": "ANSTAY",
+        "publisher": {
+          "@id": "https://anstay.com.vn/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://anstay.com.vn/search-results?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Script helper: cập nhật canonical khi SPA thay đổi route (supports history.pushState) -->
+  <script>
+    (function () {
+      var SITE_ORIGIN = 'https://anstay.com.vn';
+
+      function updateCanonical() {
+        try {
+          var link = document.getElementById('canonicalLink');
+          var path = location.pathname.replace(/\/+$/, '') || '/';
+          link.setAttribute('href', SITE_ORIGIN + path);
+          // cập nhật og:url
+          var og = document.querySelector('meta[property="og:url"]');
+          if (og) og.setAttribute('content', SITE_ORIGIN + path);
+        } catch (e) { }
+      }
+
+      // intercept pushState / replaceState
+      (function (history) {
+        var push = history.pushState;
+        history.pushState = function () {
+          var ret = push.apply(this, arguments);
+          setTimeout(updateCanonical, 0);
+          return ret;
+        };
+        var replace = history.replaceState;
+        history.replaceState = function () {
+          var ret = replace.apply(this, arguments);
+          setTimeout(updateCanonical, 0);
+          return ret;
+        };
+      })(window.history);
+
+      window.addEventListener('popstate', updateCanonical);
+      // initial
+      updateCanonical();
+
+    })();
+  </script>
+
+  <!-- Script để defer CSS loading và không chặn render -->
+  <script>
+    // Defer CSS loading để không chặn render - chạy ngay lập tức
+    (function () {
+      // Function để defer CSS
+      function deferCSS(link) {
+        if (link.rel === 'stylesheet' && link.href) {
+          var href = link.href;
+          var isLocalCSS = href.indexOf(window.location.origin) === 0 ||
+            href.indexOf('/css/') !== -1 ||
+            (href.indexOf('http') !== 0 && href.indexOf('/') === 0);
+
+          if (isLocalCSS && !link.getAttribute('data-deferred')) {
+            link.setAttribute('data-deferred', 'true');
+            // Sử dụng media="print" trick để không chặn render
+            link.media = 'print';
+            link.onload = function () {
+              this.media = 'all';
+            };
+            // Fallback cho browsers không hỗ trợ onload
+            if (!('onload' in link)) {
+              setTimeout(function () {
+                link.media = 'all';
+              }, 0);
+            }
+          }
+        }
+      }
+
+      // Defer CSS links đã có sẵn
+      var existingLinks = document.querySelectorAll('link[rel="stylesheet"]');
+      existingLinks.forEach(deferCSS);
+
+      // Intercept CSS links mới được thêm vào
+      var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          mutation.addedNodes.forEach(function (node) {
+            if (node.nodeName === 'LINK') {
+              deferCSS(node);
+            }
+          });
+        });
+      });
+
+      // Bắt đầu observe ngay lập tức
+      if (document.head) {
+        observer.observe(document.head, { childList: true, subtree: true });
+      } else {
+        var checkHead = setInterval(function () {
+          if (document.head) {
+            clearInterval(checkHead);
+            observer.observe(document.head, { childList: true, subtree: true });
+          }
+        }, 10);
+      }
+    })();
+  </script>
+  <meta name="google-site-verification" content="gfO3ztJ5QTvT3bDOZw8hYnBq6oAQ28jq-gMH9_7sfd8" />
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  <!-- Script để xử lý async CSS loading -->
+  <script>
+    /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+    (function (w) { "use strict"; var loadCSS = function (href, before, media) { var doc = w.document; var ss = doc.createElement("link"); var ref; if (before) { ref = before; } else { var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes; ref = refs[refs.length - 1]; } var sheets = doc.styleSheets; ss.rel = "stylesheet"; ss.href = href; ss.media = "only x"; function ready(cb) { if (doc.body) { return cb(); } setTimeout(function () { ready(cb); }); } ready(function () { ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling); }); var onloadcssdefined = function (cb) { var resolvedHref = ss.href; var i = sheets.length; while (i--) { if (sheets[i].href === resolvedHref) { return cb(); } } setTimeout(function () { onloadcssdefined(cb); }); }; function loadCB() { if (ss.addEventListener) { ss.removeEventListener("load", loadCB); } ss.media = media || "all"; } if (ss.addEventListener) { ss.addEventListener("load", loadCB); } ss.onloadcssdefined = onloadcssdefined; onloadcssdefined(loadCB); return ss; }; if (typeof exports !== "undefined") { exports.loadCSS = loadCSS; } else { w.loadCSS = loadCSS; } }(typeof global !== "undefined" ? global : this));
+  </script>
+</body>
+
+</html>

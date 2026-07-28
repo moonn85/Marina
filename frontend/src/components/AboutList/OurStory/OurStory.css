@@ -1,0 +1,208 @@
+:root {
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --accent: #0ea5a2;
+  --max-w: 880px;
+  --gap: 20px;
+  --pad: 28px;
+  --radius: 8px;
+  --title-font: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Wrapper */
+.about-story-container {
+  margin-top: 30px;
+  background: transparent;
+  color: var(--text);
+  padding: 32px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.about-story-wrapper {
+  width: 100%;
+  max-width: var(--max-w);
+  padding: var(--pad);
+  background: var(--bg);
+  box-sizing: border-box;
+  text-align: left;
+  font-family: var(--title-font);
+  color: var(--text);
+}
+
+/* Title & intro — normal weight, moderate size */
+.about-title {
+  font-weight: 400;
+  /* normal, not bold */
+  font-size: 26px;
+  /* modest size */
+  margin: 0 0 10px;
+  line-height: 1.2;
+  color: var(--text);
+  text-align: center;
+}
+
+.about-intro {
+  margin: 0 0 18px;
+  font-size: 16px;
+  /* normal paragraph size */
+  color: var(--muted);
+  line-height: 1.7;
+  text-align: left;
+}
+
+/* Sections */
+.about-section {
+
+  margin: 16px 0;
+  text-align: left;
+}
+
+.about-section h2 {
+  font-size: 20px;
+  /* slightly larger than paragraph */
+  margin: 7px -10px 10px;
+  color: var(--text);
+  font-weight: 600;
+  /* normal weight */
+  text-align: left;
+}
+
+.about-section p {
+  margin: 10px 0;
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 15.5px;
+  /* comfortable reading size */
+  text-align: left;
+}
+
+/* Images: simple, left aligned inside container */
+.inline-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+  justify-items: start;
+}
+
+.inline-images img {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+/* If only one image: limit width but keep layout left-aligned */
+.inline-images.single {
+  justify-items: start;
+}
+
+.inline-images.single img {
+  max-width: 720px;
+}
+
+/* Figure / image content */
+.image-content {
+  width: 260px;
+  flex: 0 0 260px;
+  text-align: left;
+}
+
+.image-content img {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.image-content figcaption {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+  text-align: left;
+}
+
+/* Core values — keep simple vertical flow */
+.core-values-section {
+  display: block;
+  gap: var(--gap);
+  margin: 16px 0;
+}
+
+.core-value {
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 8px;
+  margin: 10px 0;
+  border-left: 3px solid rgba(14, 165, 162, 0.08);
+  font-size: 14.5px;
+  color: var(--text);
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* CTA — subtle */
+.about-cta {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(14, 165, 162, 0.04);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-cta p {
+  margin: 0;
+  color: var(--accent);
+  font-weight: 400;
+  text-align: center;
+  font-size: 15px;
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .about-story-wrapper {
+    padding: 18px;
+  }
+
+  .about-title {
+    font-size: 18px;
+  }
+
+  .about-intro {
+    font-size: 15px;
+  }
+
+  .about-section p {
+    font-size: 15px;
+  }
+
+  .inline-images img {
+    max-height: 280px;
+  }
+
+  .image-content {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+/* Helpers */
+.center {
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}

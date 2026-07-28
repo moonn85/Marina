@@ -1,0 +1,152 @@
+:root {
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --accent: #0ea5a2;
+  --max-w: 980px;
+  --pad: 24px;
+  --radius: 8px;
+  --gap: 14px;
+  --title-font: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Container */
+.container-culture {
+  max-width: var(--max-w);
+  margin: 52px auto;
+  padding: var(--pad);
+  background: var(--bg);
+  color: var(--text);
+  box-sizing: border-box;
+  border-radius: var(--radius);
+  font-family: var(--title-font);
+  text-align: left;
+  /* ensure left alignment */
+}
+
+/* Headings — normal weight, modest size */
+.container-culture h2 {
+  font-size: 18px;
+  font-weight: 400;
+  /* normal */
+  margin: 0 0 8px;
+  color: var(--text);
+}
+
+.container-culture h3 {
+  font-size: 16px;
+  font-weight: 400;
+  /* normal */
+  margin: 0 0 8px;
+  color: var(--text);
+}
+
+/* Intro / description */
+.description-culture {
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 15px;
+  margin: 8px 0 16px;
+}
+
+/* Values block: single column, simple spacing */
+.culture-value {
+  display: block;
+  margin-top: 12px;
+}
+
+/* Each value card: subtle, not prominent */
+.value-1 {
+  background: #fbfcfd;
+  border-radius: 6px;
+  padding: 12px;
+  border-left: 3px solid rgba(14, 165, 162, 0.08);
+  margin-bottom: 12px;
+  box-shadow: none;
+}
+
+/* Title inside a value: normal weight */
+.title-value {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+/* Description inside a value */
+.description-value {
+  color: var(--text);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+/* List styling */
+.list-value {
+  margin: 8px 0 0 18px;
+  padding: 0;
+  list-style: disc;
+  color: var(--text);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.list-value p {
+  margin: 6px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Message / quote */
+.message-ceo {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 8px;
+  background: rgba(14, 165, 162, 0.03);
+  color: #0b3c3b;
+  font-style: normal;
+  line-height: 1.6;
+  border-left: 3px solid rgba(14, 165, 162, 0.08);
+}
+
+.message-ceo h3 {
+  margin: 0 0 6px 0;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/* Responsive adjustments */
+@media (max-width: 720px) {
+  .container-culture {
+    margin: 18px;
+    padding: 14px;
+  }
+
+  .container-culture h2 {
+    font-size: 16px;
+  }
+
+  .container-culture h3 {
+    font-size: 15px;
+  }
+
+  .description-culture {
+    font-size: 14.5px;
+  }
+
+  .title-value {
+    font-size: 14.5px;
+  }
+
+  .value-1 {
+    padding: 10px;
+  }
+}
+
+/* Helpers */
+.center {
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
