@@ -7,3 +7,4 @@ backend/dist
 .DS_Store
 *.log
 .translation-cache.json
+*.zip

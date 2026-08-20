@@ -1,270 +1,468 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
+import DatePicker, { registerLocale } from "react-datepicker";
+import { vi } from "date-fns/locale/vi";
+import { FaCalendarAlt, FaUser } from "react-icons/fa";
+import "react-datepicker/dist/react-datepicker.css";
 import "./BoxSearch.css";
-import Select, { components } from "react-select";
-import { FaMapMarkerAlt, FaBed, FaUser, FaChild } from "react-icons/fa";
+import { trackEvent } from "../../utils/analytics";
+import { useTranslation } from "@/localization";
+registerLocale("vi", vi);
+
+type DateFieldButtonProps = {
+  icon: React.ReactNode;
+  label: string;
+  value?: string;
+  onClick?: () => void;
+};
+
+type LowestPriceResponse = {
+  lowestPrice?: number | null;
+  currencyCode?: string;
+};
+
+const formatDateInput = (date: Date): string => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+};
+
+const formatDateDisplay = (date: Date | null): string => {
+  if (!date) return "";
+
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+
+  return `${day}/${month}/${year}`;
+};
+
+const getNightCount = (
+  checkIn: Date,
+  checkOut: Date,
+): number => {
+  const diffMs = checkOut.getTime() - checkIn.getTime();
+  const diffDays = Math.round(
+    diffMs / (1000 * 60 * 60 * 24),
+  );
+
+  return Math.max(1, diffDays);
+};
+
+const getExelyLowestPriceUrl = (): string => {
+  const apiBase =
+    import.meta.env.VITE_API_URL ??
+    "http://localhost:8080/api/v1";
+
+  const origin = apiBase
+    .replace(/\/api\/v1\/?$/, "")
+    .replace(/\/$/, "");
+
+  return `${origin}/api/exely/lowest-price`;
+};
+
+const formatCurrencyFromApi = (
+  amount: number,
+  currencyCode: string,
+): string => {
+  if (!Number.isFinite(amount)) return "";
+
+  return new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: currencyCode || "VND",
+    maximumFractionDigits: 0,
+  })
+    .format(amount)
+    .replace(/\s/g, "");
+};
+
+const DateFieldButton =
+  forwardRef<HTMLButtonElement, DateFieldButtonProps>(
+    ({ icon, label, value, onClick }, ref) => (
+      <button
+        ref={ref}
+        type="button"
+        className="date-field-button"
+        onClick={onClick}
+      >
+        <span className="search-icon">{icon}</span>
+
+        <span className="search-item-copy">
+          <span className="search-item-label">
+            {label}
+          </span>
+
+          <span className="search-item-value">
+            {value}
+          </span>
+        </span>
+      </button>
+    ),
+  );
+
+DateFieldButton.displayName = "DateFieldButton";
 
 const BoxSearch = () => {
+
+  const { t } = useTranslation("home");
   const navigate = useNavigate();
-  const [groupedLocations, setGroupedLocations] = useState([]);
-  const [selectedLocation, setSelectedLocation] = useState("");
-  const [rooms, setRooms] = useState([]);
-  const [selectedRoom, setSelectedRoom] = useState("");
-  const [checkInDate, setCheckInDate] = useState("");
-  const [checkOutDate, setCheckOutDate] = useState("");
-  const [selectedAdults, setSelectedAdults] = useState(1);
-  const [selectedChildren, setSelectedChildren] = useState(0);
 
-  // Quản lý trạng thái đóng/mở của từng group
-  const [expandedGroups, setExpandedGroups] = useState({});
+  const today = useMemo(() => {
+    const date = new Date();
+    date.setHours(0, 0, 0, 0);
 
-  useEffect(() => {
-    const fetchAllLocations = async () => {
-      try {
-        const [haNoiRes, haLongRes] = await Promise.all([
-          fetch("https://api.anstay.com.vn/api/v1/apartments/by-area?area=HA_NOI"),
-          fetch("https://api.anstay.com.vn/api/v1/apartments/by-area?area=HA_LONG"),
-        ]);
-        const [haNoiData, haLongData] = await Promise.all([
-          haNoiRes.json(),
-          haLongRes.json(),
-        ]);
-        const grouped = [
-          {
-            label: "Hà Nội",
-            options: haNoiData.map((apartment) => ({
-              value: apartment.name,
-              label: apartment.name,
-            })),
-          },
-          {
-            label: "Hạ Long",
-            options: haLongData.map((apartment) => ({
-              value: apartment.name,
-              label: apartment.name,
-            })),
-          },
-        ];
-        setGroupedLocations(grouped);
-
-        // Khởi tạo: tất cả nhóm đều đóng
-        setExpandedGroups({
-          "Hà Nội": false,
-          "Hạ Long": false,
-        });
-      } catch (error) {
-        setGroupedLocations([]);
-        console.error("Error fetching locations:", error);
-      }
-    };
-    fetchAllLocations();
-
-    setRooms([
-      { id: 1, label: "1 phòng" },
-      { id: 2, label: "2 phòng" },
-      { id: 3, label: "3 phòng" },
-      { id: 4, label: "4 phòng" },
-      { id: 5, label: "5 phòng" },
-    ]);
+    return date;
   }, []);
 
-  // Toggle group open/close
-  const toggleGroup = useCallback((groupLabel) => {
-    setExpandedGroups((prev) => ({
-      ...prev,
-      [groupLabel]: !prev[groupLabel],
-    }));
-  }, []);
+  const tomorrow = useMemo(() => {
+    const nextDay = new Date(today);
+    nextDay.setDate(nextDay.getDate() + 1);
 
-  // Custom GroupHeading: bấm để mở/đóng group
-  const GroupHeading = (props) => {
-    const isExpanded = expandedGroups[props.children] || false;
-    return (
-      <div
-        onClick={(e) => {
-          e.stopPropagation();
-          toggleGroup(props.children);
-        }}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          cursor: "pointer",
-          userSelect: "none",
-          padding: "4px 8px",
-          background: "#fafbfc",
-        }}
-      >
-        <span style={{ marginRight: 6, fontWeight: "bold", fontSize: "16px" }}>
-          {isExpanded ? "▼" : "▶"}
-        </span>
-        <span style={{ fontWeight: "bold" }}>{props.children}</span>
-      </div>
+    return nextDay;
+  }, [today]);
+
+  const [checkInDate, setCheckInDate] =
+    useState<Date | null>(today);
+
+  const [checkOutDate, setCheckOutDate] =
+    useState<Date | null>(tomorrow);
+
+  const [guestCount, setGuestCount] = useState(2);
+
+  const [lowestPriceLabel, setLowestPriceLabel] =
+    useState<string | null>(null);
+
+  const [isLoadingLowestPrice, setIsLoadingLowestPrice] =
+    useState(false);
+
+  const [lowestPriceError, setLowestPriceError] =
+    useState(false);
+
+  const handleSearch = useCallback(() => {
+    if (!checkInDate || !checkOutDate) {
+      alert(t("home.search.requiredDates", "Vui lòng chọn ngày nhận và trả phòng."));
+      return;
+    }
+
+    if (checkOutDate <= checkInDate) {
+      alert(t("home.search.invalidDates", "Ngày trả phòng phải sau ngày nhận phòng."));
+      return;
+    }
+
+    const nights = getNightCount(
+      checkInDate,
+      checkOutDate,
+
     );
-  };
 
-  // Custom MenuList: luôn hiện heading, chỉ show option nếu group mở
-  const MenuList = (props) => {
-    const children = React.Children.toArray(props.children).map((child) => {
-      if (!child || typeof child === 'string' || typeof child === 'number') return null;
-      if (React.isValidElement(child) && child.type === components.Group) {
-        const groupLabel = (child.props as any).label;
-        const isExpanded = expandedGroups[groupLabel];
-        // Nếu mở thì trả về group bình thường (heading + options)
-        // Nếu đóng thì trả về group chỉ có heading (options rỗng)
-        if (isExpanded) {
-          return child;
-        } else {
-          return React.cloneElement(child as React.ReactElement, {
-            children: [],
-          } as any);
+    const queryParams = new URLSearchParams({
+      date: formatDateInput(checkInDate),
+      nights: nights.toString(),
+      adults: guestCount.toString(),
+    }).toString();
+
+    navigate(`/booking/?${queryParams}`);
+  }, [
+    checkInDate,
+    checkOutDate,
+    guestCount,
+    navigate,
+    t,
+  ]);
+
+  const fetchLowestPrice = useCallback(
+    async (signal?: AbortSignal): Promise<void> => {
+      if (!checkInDate || !checkOutDate) {
+        setLowestPriceLabel(null);
+        return;
+      }
+
+      if (checkOutDate <= checkInDate) {
+        setLowestPriceLabel(null);
+        return;
+      }
+
+      const endpoint = new URL(
+        getExelyLowestPriceUrl(),
+      );
+
+      endpoint.searchParams.set(
+        "checkIn",
+        formatDateInput(checkInDate),
+      );
+
+      endpoint.searchParams.set(
+        "checkOut",
+        formatDateInput(checkOutDate),
+      );
+
+      endpoint.searchParams.set(
+        "adults",
+        guestCount.toString(),
+      );
+
+      setIsLoadingLowestPrice(true);
+      setLowestPriceError(false);
+      setLowestPriceLabel(null);
+
+      try {
+        const response = await fetch(
+          endpoint.toString(),
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+            },
+            signal,
+          },
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            `Lowest price API failed: ${response.status}`,
+          );
+        }
+
+        const data =
+          (await response.json()) as LowestPriceResponse;
+
+        // Không lấy được giá KHÔNG có nghĩa là hết phòng.
+        // Khi không có giá hợp lệ, trả nút về trạng thái "Tìm phòng".
+        if (
+          typeof data.lowestPrice !== "number" ||
+          !Number.isFinite(data.lowestPrice) ||
+          data.lowestPrice <= 0
+        ) {
+          setLowestPriceLabel(null);
+          return;
+        }
+
+        const formattedPrice =
+          formatCurrencyFromApi(
+            data.lowestPrice,
+            data.currencyCode || "VND",
+          );
+
+        // Format giá lỗi thì cũng chỉ quay về "Tìm phòng".
+        if (!formattedPrice) {
+          setLowestPriceLabel(null);
+          return;
+        }
+
+        setLowestPriceLabel(formattedPrice);
+      } catch (error) {
+        if (
+          error instanceof DOMException &&
+          error.name === "AbortError"
+        ) {
+          return;
+        }
+
+        console.error(
+          "Failed to fetch Exely lowest price:",
+          error,
+        );
+
+        // API lỗi vẫn cho khách bấm tìm phòng bình thường.
+        setLowestPriceError(true);
+        setLowestPriceLabel(null);
+      } finally {
+        if (!signal?.aborted) {
+          setIsLoadingLowestPrice(false);
         }
       }
-      return null;
-    });
-    return <components.MenuList {...props}>{children}</components.MenuList>;
-  };
+    },
+    [
+      checkInDate,
+      checkOutDate,
+      guestCount,
+    ],
+  );
 
-  const customComponents = {
-    GroupHeading,
-    MenuList,
-  };
-
-  const getCurrentSelectedOption = () => {
-    return (
-      groupedLocations
-        .flatMap((group) => group.options)
-        .find((opt) => opt.value === selectedLocation) || null
-    );
-  };
-
-  const handleSearch = () => {
-    if (!selectedLocation) {
-      alert("Vui lòng chọn địa điểm");
-      return;
-    }
+  useEffect(() => {
     if (!checkInDate || !checkOutDate) {
-      alert("Vui lòng chọn ngày đến và ngày đi");
       return;
     }
-    if (!selectedRoom) {
-      alert("Vui lòng chọn số phòng");
+
+    if (checkOutDate <= checkInDate) {
       return;
     }
-    const queryParams = new URLSearchParams({
-      location: selectedLocation,
-      checkIn: checkInDate,
-      checkOut: checkOutDate,
-      room: selectedRoom,
-      adults: selectedAdults.toString(),
-      children: selectedChildren.toString(),
-    }).toString();
-    navigate(`/search-results?${queryParams}`);
+
+    const controller = new AbortController();
+
+    // Debounce để tránh gọi API liên tục khi khách đổi lựa chọn.
+    const timeoutId = window.setTimeout(() => {
+      void fetchLowestPrice(controller.signal);
+    }, 500);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      controller.abort();
+    };
+  }, [
+    checkInDate,
+    checkOutDate,
+    guestCount,
+    fetchLowestPrice, t,
+  ]);
+
+  const handleSearchClick = (): void => {
+    trackEvent("click_search(box)_room", {
+      button_location: "search_box",
+      button_text:
+        lowestPriceLabel ?? t("home.search.searchButton", "Tìm phòng"),
+    });
+
+    handleSearch();
   };
+
+  const buttonLabel = isLoadingLowestPrice
+    ? t(
+      "home.search.checkingPrice",
+      "Đang kiểm tra giá...",
+    )
+    : lowestPriceError
+      ? t(
+        "home.search.searchButton",
+        "Tìm phòng",
+      )
+      : lowestPriceLabel ??
+      t(
+        "home.search.searchButton",
+        "Tìm phòng",
+      );
 
   return (
     <div className="boxsearch-wrapper">
-      <div className="search-item search-location">
-        <FaMapMarkerAlt className="search-icon" />
-        <Select
-          classNamePrefix="react-select"
-          options={groupedLocations}
-          value={getCurrentSelectedOption()}
-          onChange={(opt) => setSelectedLocation(opt ? opt.value : "")}
-          placeholder="Chọn địa điểm"
-          isClearable
-          isSearchable={false}
-          components={customComponents}
-          menuPlacement="auto"
-        />
-      </div>
-      {/* ... các phần còn lại giữ nguyên ... */}
       <div className="search-item search-date">
-        <input
-          type="date"
-          value={checkInDate}
-          onChange={(e) => setCheckInDate(e.target.value)}
-          className="search-date-input"
-          min={new Date().toISOString().split("T")[0]}
-        />
-      </div>
-      <div className="search-item search-date">
-        <input
-          type="date"
-          value={checkOutDate}
-          onChange={(e) => setCheckOutDate(e.target.value)}
-          className="search-date-input"
-          min={checkInDate || new Date().toISOString().split("T")[0]}
-        />
-      </div>
-      <div className="search-item">
-        <FaBed className="search-icon" />
-        <Select
-          classNamePrefix="react-select"
-          options={rooms.map((room) => ({
-            value: room.id,
-            label: room.label,
-          }))}
-          value={
-            rooms
-              .map((room) => ({ value: room.id, label: room.label }))
-              .find((opt) => opt.value === Number(selectedRoom)) || null
+        <DatePicker
+          selected={checkInDate}
+          onChange={(date: Date | null) => {
+            setCheckInDate(date);
+
+            if (
+              date &&
+              checkOutDate &&
+              checkOutDate <= date
+            ) {
+              const nextDay = new Date(date);
+              nextDay.setDate(
+                nextDay.getDate() + 1,
+              );
+
+              setCheckOutDate(nextDay);
+            }
+          }}
+          minDate={today}
+          locale="vi"
+          dateFormat="dd/MM/yyyy"
+          customInput={
+            <DateFieldButton
+              icon={<FaCalendarAlt />}
+              label={t("home.search.checkin", "Ngày nhận phòng")}
+              value={formatDateDisplay(
+                checkInDate,
+              )}
+            />
           }
-          onChange={(opt) => setSelectedRoom(opt ? String(opt.value) : "")}
-          placeholder="Số phòng"
-          isClearable
-          isSearchable={false}
+          popperPlacement="top-start"
         />
       </div>
-      {/* Người lớn */}
-      <div className="search-item">
-        <div className="counter-box">
-          <span className="counter-icon">
-            <FaUser />
+
+      <div className="search-item search-date">
+        <DatePicker
+          selected={checkOutDate}
+          onChange={(date: Date | null) => {
+            setCheckOutDate(date);
+          }}
+          minDate={
+            checkInDate
+              ? new Date(
+                checkInDate.getTime() + 86_400_000,
+              )
+              : tomorrow
+          }
+          locale="vi"
+          dateFormat="dd/MM/yyyy"
+          customInput={
+            <DateFieldButton
+              icon={<FaCalendarAlt />}
+              label={t("home.search.checkout", "Ngày trả phòng")}
+              value={formatDateDisplay(
+                checkOutDate,
+              )}
+            />
+          }
+          popperPlacement="top-start"
+        />
+      </div>
+
+      <div className="search-item search-guests">
+        <FaUser className="search-icon" />
+
+        <div className="search-item-copy search-item-copy--guests">
+          <span className="search-item-label">
+            {t("home.search.guests", "Số khách")}
           </span>
-          <div className="counter-box-content">
-            <button
-              className="counter-btn"
-              onClick={() => setSelectedAdults((prev) => Math.max(1, prev - 1))}
-            >
-              –
-            </button>
-            <span>{selectedAdults} người lớn</span>
-            <button
-              className="counter-btn"
-              onClick={() => setSelectedAdults((prev) => prev + 1)}
-            >
-              +
-            </button>
-          </div>
+
+          <span className="search-item-value">
+            {guestCount} {t("home.search.guestUnit", "khách")}
+          </span>
+        </div>
+
+        <div className="counter-box-content">
+          <button
+            className="counter-btn"
+            onClick={() => {
+              setGuestCount((previousCount) =>
+                Math.max(1, previousCount - 1),
+              );
+            }}
+            type="button"
+            disabled={guestCount <= 1}
+            aria-label={t("home.search.decreaseGuests", "Giảm số khách")}
+          >
+            -
+          </button>
+
+          <button
+            className="counter-btn"
+            onClick={() => {
+              setGuestCount(
+                (previousCount) =>
+                  previousCount + 1,
+              );
+            }}
+            type="button"
+            aria-label={t("home.search.increaseGuests", "Tăng số khách")}
+          >
+            +
+          </button>
         </div>
       </div>
-      {/* Trẻ em */}
-      <div className="search-item">
-        <div className="counter-box">
-          <span className="counter-icon">
-            <FaChild />
-          </span>
-          <div className="counter-box-content">
-            <button
-              className="counter-btn"
-              onClick={() =>
-                setSelectedChildren((prev) => Math.max(0, prev - 1))
-              }
-            >
-              –
-            </button>
-            <span>{selectedChildren} trẻ em</span>
-            <button
-              className="counter-btn"
-              onClick={() => setSelectedChildren((prev) => prev + 1)}
-            >
-              +
-            </button>
-          </div>
-        </div>
-      </div>
-      <button className="search-button1" onClick={handleSearch}>
-        Tìm phòng
+
+      <button
+        className={`search-button1${lowestPriceLabel
+          ? " search-button1--price"
+          : ""
+          }`}
+        onClick={handleSearchClick}
+        type="button"
+        disabled={isLoadingLowestPrice}
+        data-prefix={t(
+          "home.search.priceFrom",
+          "Chỉ từ",
+        )}
+      >
+        {buttonLabel}
       </button>
     </div>
   );

@@ -25,6 +25,9 @@ const STORAGE_KEY = "marinaLanguage";
 const LEGACY_STORAGE_KEY = "selectedLanguage";
 const listeners = new Set<() => void>();
 const textNodeSources = new WeakMap<Text, string>();
+// Text cuối cùng do chính lớp dịch này ghi vào node. Dùng để phân biệt
+// "node chưa đổi" với "React vừa render giá trị mới".
+const textNodeLastWritten = new WeakMap<Text, string>();
 const attributeSources = new WeakMap<Element, Map<string, string>>();
 let observer: MutationObserver | null = null;
 let currentLanguage = getInitialLanguage();
@@ -206,15 +209,29 @@ function translateTextNode(node: Text, language: LocalLanguage) {
   const normalized = normalizeText(raw);
   if (!normalized) return;
 
-  const original = textNodeSources.get(node) || getReverseSource(normalized, language);
+  // Nếu text hiện tại khác thứ ta ghi vào node lần cuối thì React vừa cập nhật
+  // node đó (đếm số, giá phòng, ngày đã chọn...). Khi ấy phải coi giá trị mới là
+  // nguồn, không được dịch lại theo source cũ đã cache - làm vậy sẽ ghi đè ngược
+  // và khoá node ở giá trị render đầu tiên.
+  const cachedSource = textNodeSources.get(node);
+  const lastWritten = textNodeLastWritten.get(node);
+  const original =
+    cachedSource !== undefined && normalized === lastWritten
+      ? cachedSource
+      : getReverseSource(normalized, language);
+
   textNodeSources.set(node, original);
 
   const translated = translateText(original, language);
-  if (translated === normalized) return;
+  if (translated === normalized) {
+    textNodeLastWritten.set(node, normalized);
+    return;
+  }
 
   const leading = raw.match(/^\s*/)?.[0] || "";
   const trailing = raw.match(/\s*$/)?.[0] || "";
   node.nodeValue = `${leading}${translated}${trailing}`;
+  textNodeLastWritten.set(node, translated);
 }
 
 function translateAttributes(element: Element, language: LocalLanguage) {

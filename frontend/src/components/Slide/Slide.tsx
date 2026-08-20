@@ -1,51 +1,115 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "@/localization";
+import {
+  FaBed,
+  FaHeadset,
+  FaLocationArrow,
+  FaUsers,
+} from "react-icons/fa";
 import "./Slide.css";
 import FloatingBanner from "../FloatingBanner/FloatingBanner";
 import FloatingContactBt from "../FloatingContactBt/FloattingContactBt";
+import BoxSearch from "../BoxSearch/BoxSearch";
 
 const PROMO_BANNER_IMAGE =
   "https://res.cloudinary.com/drpqrn5jz/image/upload/w_520,h_260,c_fill,f_auto,q_auto:eco/v1778743832/09001jtx-14a3-1200x630_xgsnnf.jpg";
+const HERO_IMAGE = "/pictures/marina-hero-entrance.jpg";
 
-const HERO_VIDEO = "/videos/anstaylager-hero.mp4";
-const HERO_POSTER = "/videos/anstaylager-poster.webp";
+const useCountUp = (targetValue: string, durationMs = 1600) => {
+  const [displayValue, setDisplayValue] = useState("0");
+
+  useEffect(() => {
+    const numericValue = Number.parseInt(targetValue.replace(/\D/g, ""), 10);
+    const shouldAnimate = numericValue === 100 || numericValue === 10000;
+
+    if (!Number.isFinite(numericValue) || numericValue <= 0 || !shouldAnimate) {
+      setDisplayValue(targetValue);
+      return;
+    }
+
+    const suffix = targetValue.replace(/[0-9.,]/g, "");
+    const startTime = performance.now();
+    let frameId = 0;
+
+    const updateValue = (now: number) => {
+      const progress = Math.min((now - startTime) / durationMs, 1);
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const currentValue = Math.round(numericValue * easedProgress);
+
+      setDisplayValue(`${currentValue.toLocaleString("vi-VN")}${suffix}`);
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(updateValue);
+      }
+    };
+
+    frameId = requestAnimationFrame(updateValue);
+
+    return () => cancelAnimationFrame(frameId);
+  }, [durationMs, targetValue]);
+
+  return displayValue;
+};
+
+const StatValue = ({ value }: { value: string }) => {
+  const animatedValue = useCountUp(value);
+  const numericValue = Number.parseInt(value.replace(/\D/g, ""), 10);
+  const shouldShowPlus = numericValue === 100 || numericValue === 10000;
+
+  return <strong>{shouldShowPlus ? `${animatedValue}+` : animatedValue}</strong>;
+};
 
 const Slide = () => {
-  const { t } = useTranslation('home');
+  const { t } = useTranslation("home");
   const [showContactBt, setShowContactBt] = useState(false);
   const [showPromoBanner, setShowPromoBanner] = useState(false);
-  // Defer loading the hero video until the page is idle so it never competes
-  // with the LCP image for bandwidth. The poster image shows instantly.
-  const [loadVideo, setLoadVideo] = useState(false);
 
   const handleBannerClose = () => {
     setShowContactBt(true);
   };
 
+  const stats = [
+    {
+      icon: <FaBed />,
+      value: "100",
+      label: t("home.stats.rooms", "Phòng & Căn hộ"),
+    },
+    {
+      icon: <FaUsers />,
+      value: "10.000",
+      label: t("home.stats.guests", "Lượt khách lưu trú"),
+    },
+    {
+      icon: <FaHeadset />,
+      value: "24/7",
+      label: t("home.stats.support", "Hỗ trợ khách hàng"),
+    },
+    {
+      icon: <FaLocationArrow />,
+      value: "50m",
+      label: t("home.stats.distance", "Cách biển"),
+    },
+  ];
+
   useEffect(() => {
     const showBanner = () => setShowPromoBanner(true);
     const browserWindow = window as Window &
       typeof globalThis & {
-        requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
+        requestIdleCallback?: (
+          callback: IdleRequestCallback,
+          options?: IdleRequestOptions,
+        ) => number;
         cancelIdleCallback?: (handle: number) => void;
       };
+
     let timeoutId: number | undefined;
     let idleId: number | undefined;
-    let videoTimeoutId: number | undefined;
 
     const scheduleBanner = () => {
-      // Defer the hero video until the browser is idle AND the LCP window has passed,
-      // so its (multi-MB) download never competes with the critical above-the-fold paint.
-      const startVideo = () => {
-        videoTimeoutId = browserWindow.setTimeout(() => setLoadVideo(true), 1200);
-      };
       if (browserWindow.requestIdleCallback) {
-        browserWindow.requestIdleCallback(startVideo, { timeout: 3000 });
-      } else {
-        startVideo();
-      }
-      if (browserWindow.requestIdleCallback) {
-        idleId = browserWindow.requestIdleCallback(showBanner, { timeout: 4500 });
+        idleId = browserWindow.requestIdleCallback(showBanner, {
+          timeout: 4500,
+        });
       } else {
         timeoutId = browserWindow.setTimeout(showBanner, 3500);
       }
@@ -60,7 +124,6 @@ const Slide = () => {
     return () => {
       window.removeEventListener("load", scheduleBanner);
       if (timeoutId) browserWindow.clearTimeout(timeoutId);
-      if (videoTimeoutId) browserWindow.clearTimeout(videoTimeoutId);
       if (idleId && browserWindow.cancelIdleCallback) {
         browserWindow.cancelIdleCallback(idleId);
       }
@@ -68,74 +131,61 @@ const Slide = () => {
   }, []);
 
   return (
-    <div className="slider-container">
-      <div className="slider-image">
-        {/* <video
-          src="/videos/anstaylager2.mp4?v=2"
-          autoPlay
-          loop
-          muted
-          playsInline
-          webkit-playsinline="true"
-          x5-playsinline="true"
-          x5-video-player-type="h5"
-          x5-video-player-fullscreen="false"
-          preload="metadata"
-          disablePictureInPicture
-          className="slider-video"
-          style={{
-            objectFit: 'cover',
-            boxShadow: '0 80px 300px rgba(0, 0, 0, 0.9), inset 0 0 60px rgba(0, 0, 0, 0.3)'
-          }}
-        /> */}
-        {/* Eager poster image = clean LCP element; painted instantly while the video defers */}
-        <img
-          className="slider-poster"
-          src={HERO_POSTER}
-          alt=""
-          fetchPriority="high"
-          decoding="async"
-          aria-hidden="true"
-        />
-        {loadVideo && (
-          <video
-            className="slider-video"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            disablePictureInPicture
+    <section className="hero-shell">
+      <div className="slider-container">
+        <div className="slider-image">
+          <img
+            className="slider-poster"
+            src={HERO_IMAGE}
+            alt=""
+            fetchPriority="high"
+            decoding="async"
             aria-hidden="true"
-            tabIndex={-1}
-            src={HERO_VIDEO}
           />
-        )}
-        {/* Block overlay to keep the hero non-interactive */}
-        <div className="slider-overlay-block"></div>
-      </div>
-
-      <div className="slider-dark-overlay">
-        <div className="slider-overlay">
-          <p className="slider-subtitle">{t('home.hero.title', 'Chào Mừng Bạn Đến Với ANSTAY')}</p>
-          <h1 className="slider-title">{t('home.hero.subtitle', 'Căn hộ tại À La Carte Hạ Long Bay được Anstay vận hành, hỗ trợ check-in, dọn phòng, tư vấn tour và chăm sóc khách trong suốt kỳ nghỉ.')}</h1>
-          {/* <div className="slider-buttons">
-            <button className="btn primary">Xem Căn Hộ →</button>
-          </div> */}
+          <div className="slider-overlay-block"></div>
         </div>
 
-        {/* Thanh tìm kiếm được đặt ở giữa */}
-        <div className="slider-search-container">
-          <div className="search-title">
-            <a href="/booking" className="btn-booking">
-              {t('home.button', 'Kiểm tra phòng trống hôm nay')}
-            </a>
+        <div className="slider-dark-overlay">
+          <div className="slider-overlay">
+            <p className="slider-subtitle">
+              {t("home.hero.title", "Anstay Marina Hotel Ha Long")}
+            </p>
+            <h1 className="slider-title">
+              <span className="slider-title-line">
+                {t("home.hero.propertyType", "Kỳ nghỉ mới tại Bãi Cháy")}
+              </span>
+              <span className="slider-title-line">
+                {t("home.hero.management", "Hạ Long do Anstay vận hành")}
+              </span>
+            </h1>
+            <p className="slider-description">
+              {t(
+                "home.hero.description",
+                "Khách sạn khai trương năm 2026 tại Halong Marina, gần bãi biển công cộng, quảng trường Marina và các điểm vui chơi nổi bật của Hạ Long.",
+              )}
+            </p>
           </div>
-          {/* <BoxSearch /> */}
         </div>
       </div>
 
-      {showPromoBanner && (
+      <div className="hero-below">
+        <div className="hero-search-wrap">
+          <BoxSearch />
+        </div>
+
+        <div className="hero-stats">
+          {stats.map((item) => (
+            <div className="hero-stat" key={item.label}>
+              <div className="hero-stat-copy">
+                <StatValue value={item.value} />
+                <span>{item.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* {showPromoBanner && (
         <FloatingBanner
           imageUrl={PROMO_BANNER_IMAGE}
           title="Mẹ và bé - Ưu đãi đặc biệt"
@@ -144,10 +194,10 @@ const Slide = () => {
           buttonLink="/mevabe"
           onClose={handleBannerClose}
         />
-      )}
+      )} */}
 
       {showContactBt && <FloatingContactBt />}
-    </div>
+    </section>
   );
 };
 
