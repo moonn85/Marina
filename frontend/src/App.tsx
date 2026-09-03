@@ -228,7 +228,7 @@ function App() {
             <Route path="/support" element={<MainLayout><Support /></MainLayout>} />
             <Route path="/search-results" element={<MainLayout><SearchResults /></MainLayout>} />
             <Route path="/marina-hotel" element={<MarinaHotelPage />} />
-            <Route path="/marina-hotel/:apartment" element={<MarinaHotelPage />} />
+            <Route path="/-hmarinaotel/:apartment" element={<MarinaHotelPage />} />
             <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />
           </Routes>
         </Suspense>

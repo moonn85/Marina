@@ -4,7 +4,7 @@
   padding: 0;
   background: transparent;
   position: relative;
-  color: var(--ci-text, #1a2d42);
+  color: var(--ci-text, #4a1d0a);
 }
 
 /* Header */
@@ -16,7 +16,7 @@
 .itinerary-title {
   font-size: 28px;
   font-weight: 700;
-  color: var(--ci-heading, #0a2140);
+  color: var(--ci-heading, #7a2416);
   margin-bottom: 16px;
   display: flex;
   align-items: center;
@@ -25,13 +25,13 @@
 }
 
 .itinerary-title i {
-  color: var(--ci-link, #1c5f9e);
+  color: var(--ci-link, #d97706);
   font-size: 26px;
 }
 
 .itinerary-summary {
   font-size: 15px;
-  color: var(--ci-muted, #526b82);
+  color: var(--ci-muted, #8a5a44);
   line-height: 1.7;
   max-width: 700px;
   margin: 0 auto;
@@ -51,7 +51,7 @@
   padding: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
-  color: var(--ci-subtle, #60758a);
+  color: var(--ci-subtle, #a1684d);
   z-index: 10;
 }
 
@@ -71,7 +71,7 @@
   border-radius: 16px;
   margin-bottom: 24px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--ci-border, #f2d3a2);
 }
 
 .hotel-header {
@@ -83,19 +83,19 @@
 
 .hotel-icon {
   font-size: 24px;
-  color: var(--ci-link, #1c5f9e);
+  color: var(--ci-link, #d97706);
 }
 
 .hotel-title {
   font-size: 20px;
   font-weight: 700;
-  color: var(--ci-heading, #0a2140);
+  color: var(--ci-heading, #7a2416);
   margin: 0;
 }
 
 .hotel-address {
   font-size: 14px;
-  color: var(--ci-muted, #526b82);
+  color: var(--ci-muted, #8a5a44);
   margin-bottom: 12px;
   display: flex;
   align-items: flex-start;
@@ -105,32 +105,32 @@
 
 .hotel-address i {
   font-size: 14px;
-  color: var(--ci-link, #1c5f9e);
+  color: var(--ci-link, #d97706);
   flex-shrink: 0;
   margin-top: 2px;
 }
 
 .hotel-description {
   font-size: 14px;
-  color: var(--ci-text, #1a2d42);
+  color: var(--ci-text, #4a1d0a);
   margin-bottom: 16px;
   line-height: 1.6;
   padding: 12px 16px;
-  background: var(--ci-soft-bg, #f4f8fc);
+  background: var(--ci-soft-bg, #fff3d6);
   border-radius: 8px;
-  border-left: 3px solid var(--ci-link, #1c5f9e);
+  border-left: 3px solid var(--ci-link, #d97706);
 }
 
 .hotel-map-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--ci-link, #1c5f9e);
+  color: var(--ci-link, #d97706);
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
   padding: 10px 20px;
-  background: #e8f2fb;
+  background: #fff0cf;
   border-radius: 8px;
   transition: all 0.2s ease;
 }
@@ -140,8 +140,8 @@
 }
 
 .hotel-map-link:hover {
-  background: #d8eafa;
-  color: var(--ci-heading, #0a2140);
+  background: #ffe3ad;
+  color: var(--ci-heading, #7a2416);
 }
 
 /* Days */
@@ -157,7 +157,7 @@
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--ci-border, #f2d3a2);
   transition: all 0.2s ease;
 }
 
@@ -171,7 +171,7 @@
   gap: 16px;
   margin-bottom: 20px;
   padding-bottom: 16px;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--ci-border, #f2d3a2);
 }
 
 .day-number {
@@ -191,7 +191,7 @@
 .day-title {
   font-size: 18px;
   font-weight: 600;
-  color: var(--ci-heading, #0a2140);
+  color: var(--ci-heading, #7a2416);
   margin: 0;
 }
 
@@ -206,20 +206,20 @@
   display: flex;
   gap: 16px;
   padding: 16px;
-  background: var(--ci-soft-bg, #f4f8fc);
+  background: var(--ci-soft-bg, #fff3d6);
   border-radius: 12px;
   transition: all 0.2s ease;
   position: relative;
 }
 
 .activity-item:hover {
-  background: #f1f5f9;
+  background: #fff0cf;
 }
 
 .activity-time {
   min-width: 70px;
   font-weight: 600;
-  color: var(--ci-link, #1c5f9e);
+  color: var(--ci-link, #d97706);
   display: flex;
   align-items: flex-start;
   gap: 6px;
@@ -242,7 +242,7 @@
 .activity-icon-wrapper {
   width: 44px;
   height: 44px;
-  background: var(--ci-link, #1c5f9e);
+  background: var(--ci-link, #d97706);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -260,14 +260,14 @@
 .activity-title {
   font-size: 15px;
   font-weight: 600;
-  color: var(--ci-heading, #0a2140);
+  color: var(--ci-heading, #7a2416);
   margin: 0 0 6px 0;
   line-height: 1.4;
 }
 
 .activity-location-link {
   font-size: 15px;
-  color: var(--ci-link, #1c5f9e);
+  color: var(--ci-link, #d97706);
   margin: 0 0 8px 0;
   display: inline-flex;
   align-items: center;
@@ -275,14 +275,14 @@
   text-decoration: none;
   font-weight: 600;
   padding: 6px 12px;
-  background: #e8f2fb;
+  background: #fff0cf;
   border-radius: 8px;
   transition: all 0.2s ease;
 }
 
 .activity-location-link:hover {
-  background: #d8eafa;
-  color: var(--ci-heading, #0a2140);
+  background: #ffe3ad;
+  color: var(--ci-heading, #7a2416);
   transform: translateX(4px);
 }
 
@@ -298,14 +298,14 @@
 
 .activity-description {
   font-size: 13px;
-  color: var(--ci-muted, #526b82);
+  color: var(--ci-muted, #8a5a44);
   line-height: 1.6;
   margin: 0;
 }
 
 .no-activities {
   text-align: center;
-  color: var(--ci-subtle, #60758a);
+  color: var(--ci-subtle, #a1684d);
   font-style: italic;
   padding: 16px;
 }
@@ -319,7 +319,7 @@
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--ci-border, #f2d3a2);
 }
 
 .btn-book-now,
@@ -346,7 +346,7 @@
 .btn-book-now:hover {
   background: var(--primary-light);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(10, 33, 64, 0.18);
+  box-shadow: 0 4px 12px rgba(180, 35, 24, 0.18);
 }
 
 .btn-book-now i,
@@ -357,14 +357,14 @@
 
 .btn-share {
   background: #fff;
-  color: var(--ci-text, #1a2d42);
-  border: 1px solid #e2e8f0;
+  color: var(--ci-text, #4a1d0a);
+  border: 1px solid var(--ci-border, #f2d3a2);
 }
 
 .btn-share:hover {
-  background: #f8fafc;
-  border-color: var(--ci-link, #1c5f9e);
-  color: var(--ci-link, #1c5f9e);
+  background: #fff6e4;
+  border-color: var(--ci-link, #d97706);
+  color: var(--ci-link, #d97706);
   transform: translateY(-2px);
 }
 

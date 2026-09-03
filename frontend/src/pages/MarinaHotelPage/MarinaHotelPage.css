@@ -1,13 +1,13 @@
 .hiden-page {
-    --hp-bg: #edf4ff;
+    --hp-bg: #fff4df;
     --hp-surface: #ffffff;
-    --hp-text: #0f2852;
-    --hp-muted: #4f6486;
-    --hp-line: rgba(37, 99, 235, 0.16);
-    --hp-primary: #2563eb;
-    --hp-primary-strong: #1e40af;
-    --hp-accent: #60a5fa;
-    --hp-shadow: 0 24px 50px rgba(30, 64, 175, 0.14);
+    --hp-text: #4a1d0a;
+    --hp-muted: #8a5a44;
+    --hp-line: rgba(180, 35, 24, 0.16);
+    --hp-primary: #b42318;
+    --hp-primary-strong: #8f1d13;
+    --hp-accent: #f5b301;
+    --hp-shadow: 0 24px 50px rgba(180, 35, 24, 0.14);
     width: 100%;
     max-width: 100%;
     margin: 0;
@@ -16,9 +16,9 @@
     overflow: hidden;
     border-radius: 0;
     background:
-        radial-gradient(circle at 8% -8%, rgba(59, 130, 246, 0.14), transparent 30%),
-        radial-gradient(circle at 94% 0%, rgba(96, 165, 250, 0.12), transparent 34%),
-        linear-gradient(180deg, #f6faff 0%, var(--hp-bg) 100%);
+        radial-gradient(circle at 8% -8%, rgba(245, 179, 1, 0.18), transparent 30%),
+        radial-gradient(circle at 94% 0%, rgba(217, 119, 6, 0.14), transparent 34%),
+        linear-gradient(180deg, #fffaf0 0%, var(--hp-bg) 100%);
     box-shadow: var(--hp-shadow);
 }
 
@@ -35,7 +35,7 @@
     height: 280px;
     top: -120px;
     right: -120px;
-    background: radial-gradient(circle, rgba(96, 165, 250, 0.24), rgba(96, 165, 250, 0));
+    background: radial-gradient(circle, rgba(245, 179, 1, 0.24), rgba(245, 179, 1, 0));
 }
 
 .hiden-page__bg-shape--two {
@@ -43,7 +43,7 @@
     height: 260px;
     left: -120px;
     bottom: -150px;
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.2), rgba(37, 99, 235, 0));
+    background: radial-gradient(circle, rgba(180, 35, 24, 0.18), rgba(180, 35, 24, 0));
 }
 
 .hiden-page__hero,
@@ -58,14 +58,14 @@
     border-radius: 26px;
     padding: clamp(16px, 2.4vw, 28px);
     background:
-        linear-gradient(135deg, rgba(14, 27, 56, 0.56), rgba(33, 64, 120, 0.42)),
-        linear-gradient(180deg, rgba(246, 250, 255, 0.14), rgba(220, 232, 251, 0.08)),
+        linear-gradient(135deg, rgba(92, 23, 12, 0.72), rgba(180, 35, 24, 0.44)),
+        linear-gradient(180deg, rgba(255, 248, 235, 0.14), rgba(255, 221, 102, 0.08)),
         url("https://res.cloudinary.com/drpqrn5jz/image/upload/v1776502327/66666666_jywmad.jpg");
     background-size: cover;
     background-position: center 77%;
     background-repeat: no-repeat;
     color: #f8fbff;
-    box-shadow: 0 16px 34px rgba(30, 64, 175, 0.18);
+    box-shadow: 0 16px 34px rgba(92, 23, 12, 0.22);
 }
 
 .hiden-page__hero-badges {
@@ -89,8 +89,8 @@
 }
 
 .hiden-page__pill--soft {
-    border-color: rgba(191, 219, 254, 0.65);
-    background: rgba(191, 219, 254, 0.24);
+    border-color: rgba(255, 214, 102, 0.7);
+    background: rgba(255, 214, 102, 0.2);
 }
 
 .hiden-page__title {
@@ -131,7 +131,7 @@
 .hiden-page__highlight i {
     font-size: 18px;
     line-height: 1;
-    color: #dbeafe;
+    color: #ffe6a3;
     margin-top: 2px;
 }
 
@@ -175,8 +175,8 @@
     padding: 4px;
     gap: 4px;
     border-radius: 999px;
-    background: #e9f1ff;
-    border: 1px solid rgba(37, 99, 235, 0.2);
+    background: #fff0cf;
+    border: 1px solid rgba(217, 119, 6, 0.24);
 }
 
 .hiden-page__lang-btn {
@@ -190,7 +190,7 @@
     gap: 8px;
     font-size: 14px;
     font-weight: 700;
-    color: #1e3a8a;
+    color: #8f1d13;
     background: transparent;
     cursor: pointer;
     transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
@@ -203,17 +203,17 @@
 
 .hiden-page__lang-btn img {
     border-radius: 50%;
-    box-shadow: 0 0 0 1px rgba(30, 58, 95, 0.15);
+    box-shadow: 0 0 0 1px rgba(122, 36, 22, 0.15);
 }
 
 .hiden-page__lang-btn.is-active {
     color: #ffffff;
     background: linear-gradient(120deg, var(--hp-primary), var(--hp-primary-strong));
-    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.32);
+    box-shadow: 0 8px 16px rgba(180, 35, 24, 0.28);
 }
 
 .hiden-page__lang-btn:focus-visible {
-    outline: 2px solid #2563eb;
+    outline: 2px solid #d97706;
     outline-offset: 2px;
 }
 

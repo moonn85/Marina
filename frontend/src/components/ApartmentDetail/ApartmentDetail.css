@@ -68,7 +68,7 @@
 
 .thumbnail.active {
   opacity: 1;
-  border: 2px solid #1890ff;
+  border: 2px solid #b42318;
 }
 
 .thumbnail img {
@@ -172,7 +172,7 @@
   font-size: 16px;
   font-weight: 500;
   border-radius: 8px;
-  background: #1890ff;
+  background: #b42318;
   box-shadow: 0 2px 8px rgba(24, 144, 255, 0.2);
   transition: all 0.3s ease;
 }
@@ -207,7 +207,7 @@
 
 .booking-detail.total {
   font-weight: bold;
-  color: #1890ff;
+  color: #b42318;
   font-size: 18px;
   border-top: 1px solid #eee;
   padding-top: 8px;

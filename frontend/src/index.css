@@ -2,27 +2,27 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
 :root {
-  /* Colors - Coastal Elegance & Modern Sky */
-  --primary: #0A2140; /* Deep Navy */
-  --primary-light: #1C3A60;
-  --secondary: #BCA073; /* Champagne Gold */
-  --secondary-light: #D6BE9A;
-  --accent: #2B6CB0; /* Accent Blue */
-  --background: #F0F6FC; /* Soft Sky Blue (based on #daedff) */
+  /* Colors - Warm Gold & Red */
+  --primary: #b42318;
+  --primary-light: #d92d20;
+  --secondary: #f5b301;
+  --secondary-light: #ffd666;
+  --accent: #d97706;
+  --background: #fff8eb;
   --surface: #FFFFFF;
-  --surface-glass: rgba(255, 255, 255, 0.85);
-  --text-main: #1A2D42;
-  --text-muted: #627D98;
-  --border: #DCE6F1; /* Soft light-blue border */
+  --surface-glass: rgba(255, 251, 240, 0.88);
+  --text-main: #4a1d0a;
+  --text-muted: #8a5a44;
+  --border: #f2d3a2;
 
   /* Typography */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   
   /* Shadows - Glass & Soft */
-  --shadow-sm: 0 4px 12px rgba(10, 33, 64, 0.04);
-  --shadow-md: 0 12px 24px rgba(10, 33, 64, 0.07);
-  --shadow-lg: 0 24px 48px rgba(10, 33, 64, 0.1);
-  --shadow-glass: 0 8px 32px rgba(10, 33, 64, 0.05);
+  --shadow-sm: 0 4px 12px rgba(180, 35, 24, 0.08);
+  --shadow-md: 0 12px 24px rgba(180, 35, 24, 0.12);
+  --shadow-lg: 0 24px 48px rgba(180, 35, 24, 0.16);
+  --shadow-glass: 0 8px 32px rgba(180, 35, 24, 0.1);
   
   /* Radii */
   --radius-sm: 8px;

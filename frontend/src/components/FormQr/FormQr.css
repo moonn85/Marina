@@ -1,7 +1,7 @@
 /* CustomerInfoForm.css */
 
 .form-page-background {
-  background-color: #f0f2f5;
+  background: linear-gradient(180deg, #fff8eb 0%, #fff2d6 100%);
   position: fixed;
   top: 0;
   left: 0;
@@ -31,7 +31,7 @@
 }
 
 .form-titleqr {
-  color: #2c3e50;
+  color: var(--primary);
   font-size: 28px;
   font-weight: 600;
   margin: 0;
@@ -40,7 +40,7 @@
 
 .form-divider {
   height: 2px;
-  background-color: #edf2f7;
+  background-color: #f7dfae;
   margin: 20px 0;
 }
 
@@ -52,8 +52,8 @@
 }
 
 .toolbar-button {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: #fff8eb;
+  border: 1px solid #f2d3a2;
   border-radius: 6px;
   cursor: pointer;
   padding: 8px 15px;
@@ -62,7 +62,7 @@
 }
 
 .toolbar-button:hover {
-  background: #e2e8f0;
+  background: #fff1cc;
   transform: translateY(-1px);
 }
 
@@ -83,7 +83,7 @@
 }
 
 .light-text {
-  color: #64748b;
+  color: var(--text-muted);
   margin: 0;
   font-size: 15px;
   line-height: 1.5;
@@ -91,7 +91,7 @@
 
 .form-field {
   background-color: #ffffff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #f2d3a2;
   border-radius: 10px;
   padding: 25px;
   margin-bottom: 15px;
@@ -104,14 +104,14 @@
 
 .form-field:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border-color: #cbd5e1;
+  border-color: #e6b94d;
 }
 
 .form-page-background > label {
   display: block;
   margin-bottom: 0;
   font-weight: 500;
-  color: #334155;
+  color: var(--text-main);
   min-width: 140px;
   text-align: left;
   font-size: 15px;
@@ -132,7 +132,7 @@ input {
   flex: 1;
   padding: 10px 0;
   border: none;
-  border-bottom: 2px solid #e2e8f0;
+  border-bottom: 2px solid #f2d3a2;
   font-size: 16px;
   outline: none;
   transition: all 0.3s ease;
@@ -145,13 +145,13 @@ input::placeholder {
 }
 
 input:focus {
-  border-bottom: 2px solid #3b82f6;
+  border-bottom: 2px solid var(--primary);
 }
 
 .submit-button {
   width: 100%;
   padding: 14px;
-  background-color: #3b82f6;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -163,13 +163,13 @@ input:focus {
 }
 
 .submit-button:hover {
-  background-color: #2563eb;
+  background: linear-gradient(135deg, #97180f 0%, var(--primary) 100%);
   transform: translateY(-1px);
-  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 10px rgba(180, 35, 24, 0.24);
 }
 
 .submit-button:active {
-  background-color: #1d4ed8;
+  background: #97180f;
   transform: translateY(0);
 }
 
@@ -211,7 +211,7 @@ select {
 }
 
 select:focus {
-  border-color: #3b82f6;
+  border-color: var(--primary);
   outline: none;
 }
 

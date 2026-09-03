@@ -96,7 +96,7 @@
   height: 50px;
   font-size: 18px;
   font-weight: bold;
-  background-color: #1890ff;
+  background-color: #b42318;
 }
 
 .contact-button {
@@ -104,13 +104,13 @@
   margin-top: 10px;
   height: 50px;
   font-size: 16px;
-  border: 2px solid #1890ff;
-  color: #1890ff;
+  border: 2px solid #b42318;
+  color: #b42318;
 }
 
 .contact-button:hover {
-  border-color: #40a9ff;
-  color: #40a9ff;
+  border-color: #d97706;
+  color: #d97706;
 }
 
 /* Remove these schedule-related styles */

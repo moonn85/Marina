@@ -1,10 +1,9 @@
 .footer-wrapper {
   width: 100%;
-  background: #daedff;
+  background: linear-gradient(180deg, #fffdf8 0%, #fff6e6 100%);
   color: #1a2d42;
   display: flex;
   flex-direction: column;
-  border-top: 1px solid #bdd8ef;
   padding-top: 20px;
 }
 
@@ -241,9 +240,9 @@
 
 .footer-bottom {
   width: 100%;
-  background-color: #daedff;
-  color: #405d78;
-  border-top: 1px solid #bdd8ef;
+  background: linear-gradient(180deg, #fffdf8 0%, #fff6e6 100%);
+  color: #11151a;
+  border-top: 1px solid linear-gradient(180deg, #fffdf8 0%, #fff6e6 100%);
   padding: 20px 0;
   margin-top: 40px;
 }

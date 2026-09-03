@@ -3,10 +3,10 @@
   grid-template-columns: 1fr 1fr 1.15fr 220px;
   align-items: stretch;
   gap: 0;
-  background: rgba(255, 255, 255, 0.98);
-  border: 1px solid rgba(214, 205, 185, 0.8);
+  background: rgba(255, 253, 247, 0.98);
+  border: 1px solid rgba(242, 211, 162, 0.95);
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(47, 33, 10, 0.12);
+  box-shadow: 0 20px 40px rgba(180, 35, 24, 0.16);
   overflow: visible;
 }
 
@@ -21,12 +21,12 @@
 }
 
 .search-item+.search-item {
-  border-left: 1px solid rgba(220, 212, 194, 0.85);
+  border-left: 1px solid rgba(242, 211, 162, 0.9);
 }
 
 .search-icon {
   flex: 0 0 auto;
-  color: #6d6557;
+  color: var(--primary);
   font-size: 20px;
 }
 
@@ -56,14 +56,14 @@
 }
 
 .search-item-label {
-  color: #6d6557;
+  color: var(--text-muted);
   font-size: 14px;
   font-weight: 600;
   line-height: 1.2;
 }
 
 .search-item-value {
-  color: #26201a;
+  color: var(--text-main);
   font-size: 18px;
   font-weight: 700;
   line-height: 1.2;
@@ -72,7 +72,7 @@
 .search-date-input {
   border: none;
   background: transparent;
-  color: #26201a;
+  color: var(--text-main);
   font-size: 18px;
   font-weight: 700;
   padding: 0;
@@ -90,37 +90,37 @@
 }
 
 .react-datepicker {
-  border: 1px solid rgba(214, 205, 185, 0.95);
+  border: 1px solid rgba(242, 211, 162, 0.95);
   border-radius: 18px;
-  box-shadow: 0 18px 42px rgba(47, 33, 10, 0.18);
+  box-shadow: 0 18px 42px rgba(180, 35, 24, 0.18);
   overflow: hidden;
   font-family: inherit;
 }
 
 .react-datepicker__header {
-  background: #f8f4ec;
-  border-bottom: 1px solid rgba(214, 205, 185, 0.95);
+  background: #fff5dd;
+  border-bottom: 1px solid rgba(242, 211, 162, 0.95);
 }
 
 .react-datepicker__current-month,
 .react-datepicker-time__header,
 .react-datepicker-year-header {
-  color: #26201a;
+  color: var(--text-main);
   font-weight: 700;
 }
 
 .react-datepicker__day--selected,
 .react-datepicker__day--keyboard-selected {
-  background: #0c5a41;
+  background: var(--primary);
   color: #fff;
 }
 
 .react-datepicker__day:hover {
-  background: #ece4d5;
+  background: var(--secondary-light);
 }
 
 .react-datepicker__day--disabled {
-  color: #c4b8a2;
+  color: #c59d76;
 }
 
 .search-guests {
@@ -136,7 +136,7 @@
 }
 
 .counter-box-content span {
-  color: #26201a;
+  color: var(--text-main);
   font-size: 14px;
   font-weight: 700;
   min-width: 38px;
@@ -149,10 +149,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(16, 90, 67, 0.18);
+  border: 1px solid rgba(180, 35, 24, 0.24);
   border-radius: 999px;
   background: #ffffff;
-  color: #121312;
+  color: var(--primary);
   font-size: 20px;
   font-weight: 700;
   line-height: 0;
@@ -163,22 +163,22 @@
 }
 
 .counter-btn:hover {
-  background: #0a025f;
-  color: #e9f4f0;
-  border-color: rgba(16, 90, 67, 0.3);
+  background: var(--primary);
+  color: #fff8eb;
+  border-color: var(--primary);
 }
 
 .search-button1 {
   margin: 12px;
   border: none;
   border-radius: 14px;
-  background: linear-gradient(180deg, #089fa4 0%, #089fa4 100%);
+  background: linear-gradient(135deg, #d92d20 0%, #b42318 100%);
   color: #fff;
   font-size: 20px;
   font-weight: 700;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 12px 28px rgba(12, 90, 65, 0.18);
+  box-shadow: 0 12px 28px rgba(180, 35, 24, 0.24);
 }
 
 .search-button1.search-button1--price {
@@ -187,7 +187,7 @@
 
 .search-button1:hover {
   transform: translateY(-1px);
-  box-shadow: 0 16px 30px rgba(12, 90, 65, 0.24);
+  box-shadow: 0 16px 30px rgba(180, 35, 24, 0.32);
 }
 
 .search-button1:disabled {
@@ -215,7 +215,7 @@
 
   .search-item:nth-child(3) {
     border-left: none;
-    border-top: 1px solid rgba(220, 212, 194, 0.85);
+    border-top: 1px solid rgba(242, 211, 162, 0.9);
   }
 }
 
@@ -233,7 +233,7 @@
 
   .search-item+.search-item {
     border-left: none;
-    border-top: 1px solid rgba(220, 212, 194, 0.85);
+    border-top: 1px solid rgba(242, 211, 162, 0.9);
   }
 
   .search-icon {

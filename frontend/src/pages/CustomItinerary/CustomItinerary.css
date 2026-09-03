@@ -1,12 +1,12 @@
 .ci-page {
-  --ci-heading: #0a2140;
-  --ci-text: #1a2d42;
-  --ci-muted: #526b82;
-  --ci-subtle: #60758a;
-  --ci-link: #1c5f9e;
-  --ci-success: #167347;
-  --ci-border: #d8e3ee;
-  --ci-soft-bg: #f4f8fc;
+  --ci-heading: #7a2416;
+  --ci-text: #4a1d0a;
+  --ci-muted: #8a5a44;
+  --ci-subtle: #a1684d;
+  --ci-link: #d97706;
+  --ci-success: #b45309;
+  --ci-border: #f2d3a2;
+  --ci-soft-bg: #fff3d6;
   font-family: var(--font-family);
   background-color: var(--background);
   color: var(--ci-text);
@@ -33,7 +33,6 @@
 .ci-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(10, 33, 64, 0.72), rgba(10, 33, 64, 0.5));
 }
 
 .ci-hero-content {
@@ -56,7 +55,7 @@
   font-weight: 700;
   font-style: italic;
   color: #ffe4a3;
-  text-shadow: 0 1px 3px rgba(10, 33, 64, 0.55);
+  text-shadow: 0 1px 3px rgba(92, 23, 12, 0.45);
 }
 
 .ci-subtitle {
@@ -64,7 +63,7 @@
   color: #fff;
   opacity: 1;
   margin: 0 auto;
-  text-shadow: 0 1px 3px rgba(10, 33, 64, 0.55);
+  text-shadow: 0 1px 3px rgba(92, 23, 12, 0.45);
 }
 
 .ci-form-section {
@@ -126,7 +125,7 @@
 /* Input styling */
 .ci-form-row-name .ant-input {
   border-radius: 8px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--ci-border);
   height: 44px;
   font-size: 15px;
   text-align: center;
@@ -141,7 +140,7 @@
 
 .ci-form-row-name .ant-input:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(43, 108, 176, 0.15);
+  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.16);
 }
 
 .ci-form-row-name .ant-input-lg {
@@ -151,13 +150,13 @@
 .ci-city-select .ant-select-selector,
 .ci-date-range {
   border-radius: 8px !important;
-  border: 1px solid #e2e8f0 !important;
+  border: 1px solid var(--ci-border) !important;
   transition: all 0.3s ease !important;
   height: 44px !important;
 }
 
 .ci-city-select .ant-select-selection-item,
-.ci-date-range .ant-picker-input > input {
+.ci-date-range .ant-picker-input>input {
   color: var(--ci-text) !important;
   font-weight: 500;
 }
@@ -175,7 +174,7 @@
 .ci-city-select.ant-select-focused .ant-select-selector,
 .ci-date-range.ant-picker-focused {
   border-color: var(--accent) !important;
-  box-shadow: 0 0 0 2px rgba(43, 108, 176, 0.15) !important;
+  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.16) !important;
 }
 
 .ci-date-range .ant-picker-separator {
@@ -195,9 +194,9 @@
   align-items: center;
   justify-content: center;
   border-radius: 25px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--ci-border);
   overflow: hidden;
-  background-color: #f8fafc;
+  background-color: var(--ci-soft-bg);
   height: 44px;
 }
 
@@ -254,7 +253,7 @@
 .ci-submit-btn:hover:not(:disabled) {
   background: var(--primary-light);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(10, 33, 64, 0.18);
+  box-shadow: 0 4px 12px rgba(180, 35, 24, 0.18);
 }
 
 .ci-submit-btn:disabled {
@@ -332,14 +331,33 @@
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(43, 108, 176, 0.4); }
-  50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(43, 108, 176, 0); }
+
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(180, 35, 24, 0.35);
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 20px rgba(180, 35, 24, 0);
+  }
 }
 
 @keyframes sparkle {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-10deg); }
-  75% { transform: rotate(10deg); }
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-10deg);
+  }
+
+  75% {
+    transform: rotate(10deg);
+  }
 }
 
 .ci-loading-title {
@@ -415,12 +433,21 @@
 }
 
 @keyframes checkIn {
-  0% { transform: scale(0); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 @media (max-width: 900px) {
+
   .ci-form-row,
   .ci-form-row-2col,
   .ci-form-row-bottom {

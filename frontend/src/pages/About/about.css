@@ -1,16 +1,16 @@
 .about-container {
-    --about-navy: #08243f;
-    --about-navy-soft: #103a5b;
-    --about-ocean: #087f8c;
-    --about-ocean-soft: #dff8f7;
+    --about-navy: #7a2416;
+    --about-navy-soft: #8f1d13;
+    --about-ocean: #d97706;
+    --about-ocean-soft: #fff0cf;
     --about-sand: #f4d98e;
     --about-sand-soft: #fbf4df;
-    --about-ink: #102033;
-    --about-muted: #64748b;
-    --about-line: #dbe7ee;
-    --about-bg: #f7fbfc;
+    --about-ink: #4a1d0a;
+    --about-muted: #8a5a44;
+    --about-line: #f2d3a2;
+    --about-bg: #fff8eb;
     --about-card: #ffffff;
-    --about-shadow: 0 18px 50px rgba(8, 36, 63, 0.12);
+    --about-shadow: 0 18px 50px rgba(180, 35, 24, 0.12);
     width: 100%;
     min-height: 100vh;
     background: var(--about-bg);
@@ -47,9 +47,6 @@
     position: absolute;
     inset: 0;
     z-index: -2;
-    background:
-        linear-gradient(90deg, rgba(8, 36, 63, 0.86) 0%, rgba(8, 36, 63, 0.58) 45%, rgba(8, 36, 63, 0.18) 100%),
-        linear-gradient(180deg, rgba(8, 36, 63, 0.28) 0%, rgba(8, 36, 63, 0.52) 100%);
 }
 
 .about-hero::after {
@@ -211,7 +208,7 @@
 
 .about-intro__text {
     margin: 24px 0 0;
-    color: #31445a;
+    color: #8a5a44;
     font-size: clamp(1.04rem, 1.6vw, 1.18rem);
     line-height: 1.9;
 }
@@ -469,7 +466,7 @@
     overflow: hidden;
 }
 
-.room-card > img {
+.room-card>img {
     display: block;
     width: 100%;
     aspect-ratio: 2 / 1;
@@ -868,6 +865,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .about-button,
     .amenity-card,
     .feature-card,

@@ -43,7 +43,7 @@
 .popup-form>input:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.15);
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.18);
 }
 
 .popup-form>label {
@@ -108,8 +108,8 @@ label {
 }
 
 .close-btn:hover {
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: #fff5dd;
+  color: var(--primary);
   transform: scale(1.1);
 }
 
@@ -216,7 +216,7 @@ label {
 
 .popup-header h2 {
   margin: 0 0 10px 0;
-  color: #1f2937;
+  color: var(--primary);
   font-size: 28px;
   font-weight: 700;
 }

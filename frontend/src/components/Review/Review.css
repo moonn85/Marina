@@ -352,7 +352,7 @@
   min-width: 280px;
   padding: 16px 26px;
   border-radius: 16px;
-  background: linear-gradient(135deg, #0e4a55, #123f7c);
+  background: rgb(173, 8, 8);
   color: #ffffff;
   text-decoration: none;
   font-weight: 700;
@@ -363,6 +363,7 @@
 .review-main-cta:hover {
   transform: translateY(-2px);
   box-shadow: 0 20px 36px rgba(14, 74, 85, 0.28);
+  color: #FFD700;
 }
 
 /* Navigation */

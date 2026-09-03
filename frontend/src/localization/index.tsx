@@ -329,7 +329,18 @@ export function LocalizedAntdProvider({ children }: { children: ReactNode }) {
   const { language } = useTranslation();
 
   return (
-    <ConfigProvider locale={ANTD_LOCALES[language]}>
+    <ConfigProvider
+      locale={ANTD_LOCALES[language]}
+      theme={{
+        token: {
+          colorPrimary: "#b42318",
+          colorInfo: "#b42318",
+          colorLink: "#d97706",
+          colorLinkHover: "#b42318",
+          borderRadius: 10,
+        },
+      }}
+    >
       {children}
     </ConfigProvider>
   );

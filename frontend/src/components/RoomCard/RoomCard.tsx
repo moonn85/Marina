@@ -459,7 +459,7 @@ const RoomCard = () => {
                         </p>
                         <p>
                           Tiết kiệm:{" "}
-                          <span style={{ color: "green", fontWeight: 600 }}>
+                          <span style={{ color: "#d97706", fontWeight: 600 }}>
                             {amountSaved.toLocaleString("vi-VN")} VND (
                             {discount}
                             %)

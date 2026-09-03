@@ -6,8 +6,8 @@
     padding: 0 10px 60px 10px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
     line-height: 1.6;
-    color: #0f172a;
-    background: #ffffff;
+    color: #4a1d0a;
+    background: #fff8eb;
     min-height: 100vh;
 }
 
@@ -16,7 +16,7 @@
     text-align: center;
     margin: 0 0 32px 0;
     padding: 56px 20px;
-    background: #3371e4;
+    background: linear-gradient(135deg, #b42318 0%, #d97706 100%);
     color: #ffffff;
 }
 
@@ -60,7 +60,7 @@
     gap: 10px;
     font-size: 1.75rem;
     margin: 0 0 20px 20px;
-    color: #0f172a;
+    color: #4a1d0a;
     font-weight: 700;
     text-align: left;
 }
@@ -68,7 +68,7 @@
 .section-icon {
     font-size: 1.65rem;
     margin-right: 4px;
-    color: #3371e4;
+    color: #d97706;
 }
 
 /* Policy Cards */
@@ -89,7 +89,7 @@
 .policy-card-title {
     font-size: 1.125rem;
     margin: 0 0 12px 0;
-    color: #0f172a;
+    color: #4a1d0a;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -98,7 +98,7 @@
 
 .policy-card-title i {
     font-size: 1.2rem;
-    color: #3371e4;
+    color: #d97706;
 }
 
 /* Policy Grid */
@@ -128,7 +128,7 @@
 .policy-list li i {
     margin-top: 2px;
     font-size: 1.1rem;
-    color: #3371e4;
+    color: #d97706;
 }
 
 /* Time Info */
@@ -139,7 +139,7 @@
 }
 
 .time {
-    background: #3371e4;
+    background: #b42318;
     color: #ffffff;
     padding: 8px 14px;
     border-radius: 999px;
@@ -168,12 +168,12 @@
     align-items: center;
     gap: 8px;
     margin: 0 0 10px 0;
-    color: #374151;
+    color: #8a5a44;
     font-size: 1.1rem;
 }
 
 .age-group h3 i {
-    color: #3371e4;
+    color: #d97706;
 }
 
 /* Bed Policy */
@@ -195,12 +195,12 @@
     align-items: center;
     gap: 8px;
     margin: 0 0 15px 0;
-    color: #374151;
+    color: #8a5a44;
     font-size: 1.1rem;
 }
 
 .age-category h3 i {
-    color: #3371e4;
+    color: #d97706;
 }
 
 .bed-list {
@@ -218,12 +218,12 @@
 }
 
 .bed-list li i {
-    color: #3371e4;
+    color: #d97706;
 }
 
 .bed-type {
     flex: 1;
-    color: #374151;
+    color: #8a5a44;
 }
 
 .price {
@@ -245,7 +245,7 @@
 
 .payment-intro p {
     font-size: 1.1rem;
-    color: #64748b;
+    color: #8a5a44;
     margin: 0;
 }
 
@@ -264,14 +264,14 @@
     background: #ffffff;
     padding: 24px 16px;
     border-radius: 12px;
-    border: 2px solid #f1f5f9;
+    border: 2px solid #f2d3a2;
     transition: all 0.3s ease;
     text-align: center;
 }
 
 .payment-card:hover {
-    border-color: #3371e4;
-    box-shadow: 0 4px 20px rgba(51, 113, 228, 0.15);
+    border-color: #d97706;
+    box-shadow: 0 4px 20px rgba(217, 119, 6, 0.15);
     transform: translateY(-2px);
 }
 
@@ -281,7 +281,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f8fafc;
+    background: #fff3d6;
     border-radius: 8px;
     padding: 8px;
 }.card-logo1  {
@@ -290,7 +290,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f8fafc;
+    background: #fff3d6;
     border-radius: 8px;
     padding: 0px;
 }
@@ -305,12 +305,12 @@
 .card-logo  i,
 .card-logo1 i {
     font-size: 2rem;
-    color: #3371e4;
+    color: #d97706;
 }
 
 .card-name {
     font-weight: 600;
-    color: #0f172a;
+    color: #4a1d0a;
     font-size: 0.95rem;
 }
 
@@ -320,9 +320,9 @@
     gap: 32px;
     margin-top: 24px;
     padding: 20px;
-    background: #f8fafc;
+    background: #fff3d6;
     border-radius: 12px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #f2d3a2;
 }
 
 
@@ -330,19 +330,19 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #64748b;
+    color: #8a5a44;
     font-size: 0.9rem;
     font-weight: 500;
 }
 
 .feature-item i {
-    color: #3371e4;
+    color: #d97706;
     font-size: 1.1rem;
 }
 
 /* Tags */
 .free-tag {
-    background: #3371e4;
+    background: #b42318;
     color: #ffffff;
     padding: 4px 12px;
     border-radius: 999px;
@@ -361,8 +361,8 @@
 
 /* Notes and Warnings */
 .policy-note {
-    background: #f1f7fb;
-    border: 1px solid #d6e6ef;
+    background: #fff3d6;
+    border: 1px solid #f2d3a2;
     border-radius: 8px;
     padding: 15px;
     margin-top: 20px;
@@ -373,12 +373,12 @@
     display: flex;
     align-items: flex-start;
     gap: 8px;
-    color: #1e40af;
+    color: #8a5a44;
 }
 
 .policy-note i {
     margin-top: 2px;
-    color: #3371e4;
+    color: #d97706;
 }
 
 .policy-warning {
