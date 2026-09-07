@@ -1685,13 +1685,277 @@ export const KEY_TRANSLATIONS: Record<string, Record<LocalLanguage, string>> = {
     "ru": "Мы называем это «Дом», а клиенты называют это эмоциями. Послушайте реальные истории людей, которые останавливались в Anstay.",
     "hi": "हम इसे \"घर\" कहते हैं - और ग्राहक इसे भावनाएँ कहते हैं। उन लोगों से वास्तविक कहानियाँ सुनें जो एंस्टे में रुके हैं।"
   },
-  "home.hero.title": {
+  "home.hero.oldTitle": {
     "vi": "Chào Mừng Bạn Đến Với ANSTAY",
     "en": "Welcome To ANSTAY",
     "ko": "안스테이에 오신 것을 환영합니다",
     "zh": "欢迎来到安斯泰",
     "ru": "Добро пожаловать в ANSTAY",
     "hi": "ANSTAY में आपका स्वागत है"
+  },
+  "home.hero.title": {
+    "vi": "Anstay Marina Hotel Ha Long",
+    "en": "Anstay Marina Hotel Ha Long",
+    "ko": "안스테이 마리나 호텔 하롱",
+    "zh": "安泰下龙码头酒店",
+    "ru": "Отель Anstay Marina, Халонг",
+    "hi": "एनस्टे मरीना होटल हा लॉन्ग"
+  },
+  "home.hero.propertyType": {
+    "vi": "Kỳ nghỉ mới tại Bãi Cháy",
+    "en": "A new stay in Bai Chay",
+    "ko": "바이짜이의 새로운 숙소",
+    "zh": "白斋的新住宿体验",
+    "ru": "Новый отдых в Бай-Чае",
+    "hi": "बाई चाय में नया ठहराव"
+  },
+  "home.hero.management": {
+    "vi": "Hạ Long do Anstay vận hành",
+    "en": "Managed by Anstay in Ha Long",
+    "ko": "안스테이가 운영하는 하롱 숙소",
+    "zh": "安泰运营的下龙住宿",
+    "ru": "Проживание в Халонге под управлением Anstay",
+    "hi": "एनस्टे द्वारा संचालित हा लॉन्ग आवास"
+  },
+  "home.hero.description": {
+    "vi": "Khách sạn mới tại Halong Marina, gần bãi biển công cộng, quảng trường Marina và nhiều điểm vui chơi nổi bật. Phù hợp cho cặp đôi, gia đình và nhóm bạn cần nơi lưu trú thuận tiện tại Bãi Cháy.",
+    "en": "A new hotel in Halong Marina, close to the public beach, Marina Square and many popular attractions. Ideal for couples, families and groups looking for a convenient stay in Bai Chay.",
+    "ko": "하롱 마리나의 새로운 호텔로 공공 해변, 마리나 광장 및 주요 관광 명소와 가깝습니다. 바이짜이에서 편리하게 머물고 싶은 커플, 가족, 친구 모임에 적합합니다.",
+    "zh": "位于下龙码头的新酒店，靠近公共海滩、码头广场及众多热门景点，适合希望在白斋便捷住宿的情侣、家庭和朋友团体。",
+    "ru": "Новый отель в Halong Marina рядом с общественным пляжем, площадью Marina и популярными достопримечательностями. Подходит для пар, семей и компаний, которым важно удобное размещение в Бай-Чае.",
+    "hi": "हालोंग मरीना में नया होटल, सार्वजनिक समुद्र तट, मरीना स्क्वायर और लोकप्रिय आकर्षणों के पास। बाई चाय में सुविधाजनक ठहराव चाहने वाले जोड़ों, परिवारों और दोस्तों के समूहों के लिए उपयुक्त।"
+  },
+  "home.stats.rooms": {
+    "vi": "Phòng & căn hộ",
+    "en": "Rooms & apartments",
+    "ko": "객실 및 아파트",
+    "zh": "客房和公寓",
+    "ru": "Номера и апартаменты",
+    "hi": "कमरे और अपार्टमेंट"
+  },
+  "home.stats.guests": {
+    "vi": "Lượt khách lưu trú",
+    "en": "Guests welcomed",
+    "ko": "투숙객 수",
+    "zh": "接待宾客",
+    "ru": "Гостей принято",
+    "hi": "ठहरे हुए मेहमान"
+  },
+  "home.stats.support": {
+    "vi": "Hỗ trợ khách hàng",
+    "en": "Guest support",
+    "ko": "고객 지원",
+    "zh": "客户支持",
+    "ru": "Поддержка гостей",
+    "hi": "अतिथि सहायता"
+  },
+  "home.stats.distance": {
+    "vi": "Cách biển",
+    "en": "From the beach",
+    "ko": "해변까지",
+    "zh": "距海滩",
+    "ru": "До пляжа",
+    "hi": "समुद्र तट तक"
+  },
+  "home.search.requiredDates": {
+    "vi": "Vui lòng chọn ngày nhận và trả phòng.",
+    "en": "Please select check-in and check-out dates.",
+    "ko": "체크인 및 체크아웃 날짜를 선택해 주세요.",
+    "zh": "请选择入住和退房日期。",
+    "ru": "Выберите даты заезда и выезда.",
+    "hi": "कृपया चेक-इन और चेक-आउट की तारीख चुनें।"
+  },
+  "home.search.invalidDates": {
+    "vi": "Ngày trả phòng phải sau ngày nhận phòng.",
+    "en": "Check-out must be after check-in.",
+    "ko": "체크아웃 날짜는 체크인 날짜보다 늦어야 합니다.",
+    "zh": "退房日期必须晚于入住日期。",
+    "ru": "Дата выезда должна быть позже даты заезда.",
+    "hi": "चेक-आउट की तारीख चेक-इन के बाद होनी चाहिए।"
+  },
+  "home.search.checkingPrice": {
+    "vi": "Đang kiểm tra giá...",
+    "en": "Checking price...",
+    "ko": "요금을 확인하는 중...",
+    "zh": "正在查询价格...",
+    "ru": "Проверяем цену...",
+    "hi": "कीमत देखी जा रही है..."
+  },
+  "home.search.searchButton": {
+    "vi": "Tìm phòng",
+    "en": "Find rooms",
+    "ko": "객실 찾기",
+    "zh": "查找客房",
+    "ru": "Найти номер",
+    "hi": "कमरे खोजें"
+  },
+  "home.search.checkin": {
+    "vi": "Ngày nhận phòng",
+    "en": "Check-in date",
+    "ko": "체크인 날짜",
+    "zh": "入住日期",
+    "ru": "Дата заезда",
+    "hi": "चेक-इन तिथि"
+  },
+  "home.search.checkout": {
+    "vi": "Ngày trả phòng",
+    "en": "Check-out date",
+    "ko": "체크아웃 날짜",
+    "zh": "退房日期",
+    "ru": "Дата выезда",
+    "hi": "चेक-आउट तिथि"
+  },
+  "home.search.guests": {
+    "vi": "Số khách",
+    "en": "Guests",
+    "ko": "투숙객 수",
+    "zh": "入住人数",
+    "ru": "Количество гостей",
+    "hi": "मेहमानों की संख्या"
+  },
+  "home.search.guestUnit": {
+    "vi": "khách",
+    "en": "guests",
+    "ko": "명",
+    "zh": "位",
+    "ru": "гостей",
+    "hi": "मेहमान"
+  },
+  "home.search.decreaseGuests": {
+    "vi": "Giảm số khách",
+    "en": "Decrease guests",
+    "ko": "투숙객 수 줄이기",
+    "zh": "减少入住人数",
+    "ru": "Уменьшить количество гостей",
+    "hi": "मेहमानों की संख्या घटाएं"
+  },
+  "home.search.increaseGuests": {
+    "vi": "Tăng số khách",
+    "en": "Increase guests",
+    "ko": "투숙객 수 늘리기",
+    "zh": "增加入住人数",
+    "ru": "Увеличить количество гостей",
+    "hi": "मेहमानों की संख्या बढ़ाएं"
+  },
+  "home.search.priceFrom": {
+    "vi": "Chỉ từ",
+    "en": "From",
+    "ko": "최저",
+    "zh": "起价",
+    "ru": "От",
+    "hi": "शुरू से"
+  },
+  "home.review.marinaTitle": {
+    "vi": "Khách hàng nói gì về Anstay Marina?",
+    "en": "What guests say about Anstay Marina",
+    "ko": "고객이 말하는 안스테이 마리나",
+    "zh": "住客如何评价安泰码头酒店",
+    "ru": "Что гости говорят об Anstay Marina",
+    "hi": "मेहमान एनस्टे मरीना के बारे में क्या कहते हैं"
+  },
+  "home.review.marinaSubtitle": {
+    "vi": "Từ vị trí, độ sạch sẽ đến trải nghiệm lưu trú, đây là những chia sẻ thực tế từ khách đã đặt phòng tại Anstay Marina Hotel Ha Long.",
+    "en": "From location and cleanliness to the overall stay, these are genuine comments from guests who booked Anstay Marina Hotel Ha Long.",
+    "ko": "위치와 청결도부터 투숙 경험까지, 안스테이 마리나 호텔 하롱을 예약한 고객의 실제 후기입니다.",
+    "zh": "从位置、清洁度到整体入住体验，以下均为预订安泰下龙码头酒店的住客真实分享。",
+    "ru": "От расположения и чистоты до общего впечатления от проживания: это реальные отзывы гостей, бронировавших Anstay Marina Hotel Ha Long.",
+    "hi": "स्थान, स्वच्छता और ठहरने के अनुभव तक, ये एनस्टे मरीना होटल हा लॉन्ग बुक करने वाले मेहमानों की वास्तविक टिप्पणियां हैं।"
+  },
+  "home.review.marinaContent1": {
+    "vi": "Giá hợp lý và phòng sạch sẽ.",
+    "en": "Reasonable price and a clean room.",
+    "ko": "합리적인 가격과 깨끗한 객실입니다.",
+    "zh": "价格合理，客房干净。",
+    "ru": "Разумная цена и чистый номер.",
+    "hi": "उचित कीमत और साफ कमरा।"
+  },
+  "home.review.marinaContent2": {
+    "vi": "Giường rộng, tiện nghi mới, nhân viên thân thiện, phù hợp cho kỳ nghỉ gia đình.",
+    "en": "Spacious beds, new amenities and friendly staff, ideal for a family stay.",
+    "ko": "넓은 침대, 새 시설과 친절한 직원이 있어 가족 여행에 적합합니다.",
+    "zh": "床铺宽敞、设施崭新、员工友善，很适合家庭入住。",
+    "ru": "Просторные кровати, новые удобства и дружелюбный персонал - отличный вариант для семейного отдыха.",
+    "hi": "विशाल बिस्तर, नई सुविधाएं और मित्रवत कर्मचारी, पारिवारिक ठहराव के लिए उपयुक्त।"
+  },
+  "home.review.marinaContent3": {
+    "vi": "Phòng sạch, thoáng, khách sạn mới và hỗ trợ rất nhiệt tình trong suốt thời gian lưu trú.",
+    "en": "The room was clean and airy; the hotel is new and the team was very helpful throughout the stay.",
+    "ko": "객실은 깨끗하고 쾌적했으며, 새 호텔의 직원들이 투숙 내내 매우 친절하게 도와주었습니다.",
+    "zh": "客房干净通风，酒店崭新，团队在整个入住期间都提供了热情周到的帮助。",
+    "ru": "Номер был чистым и просторным, отель новый, а команда очень внимательно помогала на протяжении всего проживания.",
+    "hi": "कमरा साफ और हवादार था, होटल नया है और टीम ने पूरे ठहराव के दौरान बहुत मदद की।"
+  },
+  "home.review.viewGoogle": {
+    "vi": "Xem trên Google Maps",
+    "en": "View on Google Maps",
+    "ko": "Google 지도에서 보기",
+    "zh": "在 Google 地图中查看",
+    "ru": "Посмотреть на Google Картах",
+    "hi": "Google Maps पर देखें"
+  },
+  "home.review.viewDetails": {
+    "vi": "Xem thông tin",
+    "en": "View details",
+    "ko": "정보 보기",
+    "zh": "查看详情",
+    "ru": "Подробнее",
+    "hi": "जानकारी देखें"
+  },
+  "home.review.updating": {
+    "vi": "Đang cập nhật",
+    "en": "Updating",
+    "ko": "업데이트 중",
+    "zh": "正在更新",
+    "ru": "Обновляется",
+    "hi": "अपडेट हो रहा है"
+  },
+  "home.review.openPlatform": {
+    "vi": "Mở đánh giá {{platform}}",
+    "en": "Open {{platform}} reviews",
+    "ko": "{{platform}} 후기 열기",
+    "zh": "打开 {{platform}} 评价",
+    "ru": "Открыть отзывы {{platform}}",
+    "hi": "{{platform}} समीक्षाएं खोलें"
+  },
+  "home.review.rating": {
+    "vi": "{{rating}} trên 5 sao",
+    "en": "{{rating}} out of 5 stars",
+    "ko": "별점 5점 만점에 {{rating}}",
+    "zh": "满分 5 星，{{rating}} 分",
+    "ru": "{{rating}} из 5 звезд",
+    "hi": "5 में से {{rating}} स्टार"
+  },
+  "home.review.source": {
+    "vi": "Nguồn: {{source}}",
+    "en": "Source: {{source}}",
+    "ko": "출처: {{source}}",
+    "zh": "来源：{{source}}",
+    "ru": "Источник: {{source}}",
+    "hi": "स्रोत: {{source}}"
+  },
+  "home.review.previous": {
+    "vi": "Đánh giá trước",
+    "en": "Previous review",
+    "ko": "이전 후기",
+    "zh": "上一条评价",
+    "ru": "Предыдущий отзыв",
+    "hi": "पिछली समीक्षा"
+  },
+  "home.review.next": {
+    "vi": "Đánh giá tiếp theo",
+    "en": "Next review",
+    "ko": "다음 후기",
+    "zh": "下一条评价",
+    "ru": "Следующий отзыв",
+    "hi": "अगली समीक्षा"
+  },
+  "home.review.bookDirect": {
+    "vi": "ĐẶT PHÒNG TRỰC TIẾP - GIÁ TỐT",
+    "en": "BOOK DIRECT - BEST RATE",
+    "ko": "직접 예약 - 최저가",
+    "zh": "直接预订 - 优惠房价",
+    "ru": "БРОНИРУЙТЕ НАПРЯМУЮ - ЛУЧШАЯ ЦЕНА",
+    "hi": "सीधे बुक करें - सर्वोत्तम दर"
   },
   "home.hero.subtitle": {
     "vi": "Căn hộ tại À La Carte Hạ Long Bay được Anstay vận hành, hỗ trợ check-in, dọn phòng, tư vấn tour và chăm sóc khách trong suốt kỳ nghỉ.",

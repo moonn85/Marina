@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+﻿import { useEffect, useRef } from "react";
 import { useTranslation } from "@/localization";
 
 import "./Home.css";
@@ -17,7 +17,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const sections = sectionRefs.current.filter(
-      (section): section is HTMLDivElement => section !== null
+      (section): section is HTMLDivElement => section !== null,
     );
 
     if (sections.length === 0) return;
@@ -39,7 +39,7 @@ const Home: React.FC = () => {
       {
         threshold: 0.18,
         rootMargin: "0px 0px -10% 0px",
-      }
+      },
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -75,13 +75,13 @@ const Home: React.FC = () => {
               <h6 className="event-banner-subtitle">
                 {t(
                   "home.img.subtitle",
-                  "SẠCH ĐẸP, GIÁ HỢP LÝ, THUẬN TIỆN KHÁM PHÁ HẠ LONG"
+                  "SẠCH ĐẸP, GIÁ HỢP LÝ, THUẬN TIỆN KHÁM PHÁ HẠ LONG",
                 )}
               </h6>
               <p className="event-banner-description">
                 {t(
                   "home.img.description",
-                  "Anstay Marina Hotel Ha Long phù hợp cho cặp đôi, gia đình và nhóm bạn cần một nơi ở mới, dễ di chuyển, có bể bơi tầng thượng, tiện ích đầy đủ và đội ngũ hỗ trợ lưu trú rõ ràng từ Anstay."
+                  "Anstay Marina Hotel Ha Long phù hợp cho cặp đôi, gia đình và nhóm bạn cần nơi lưu trú mới, dễ di chuyển, gần biển, đầy đủ tiện ích và được đội ngũ Anstay hỗ trợ đặt phòng rõ ràng.",
                 )}
               </p>
             </div>

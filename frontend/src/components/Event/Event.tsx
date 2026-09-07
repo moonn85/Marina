@@ -1,4 +1,4 @@
-import { createPortal } from "react-dom";
+﻿import { createPortal } from "react-dom";
 import { useEffect, useState } from "react";
 import { useTranslation } from "@/localization";
 import "./Event.css";
@@ -29,11 +29,11 @@ const Event = () => {
   const destinations = [
     {
       id: 1,
-      city: t("home.event.destination1", "Du thuyền thăm vịnh"),
+      city: t("home.event.destination1", "Du thuyền tham quan vịnh"),
       image: getCloudinaryCardImage(
         "https://res.cloudinary.com/drpqrn5jz/image/upload/v1778742643/anh9_sdtfkq.webp",
       ),
-      alt: "Du thuyền thăm vịnh",
+      alt: "Du thuyền tham quan Vịnh Hạ Long",
     },
     {
       id: 2,
@@ -41,11 +41,11 @@ const Event = () => {
       image: getCloudinaryCardImage(
         "https://res.cloudinary.com/drpqrn5jz/image/upload/v1778742669/anh5_gyr7cl.png",
       ),
-      alt: "Dù lượn trên bầu trời",
+      alt: "Dù lượn ngắm toàn cảnh Hạ Long",
     },
     {
       id: 3,
-      city: t("home.event.destination4", "Pháo Hoa"),
+      city: t("home.event.destination4", "Pháo hoa"),
       image: getCloudinaryCardImage(
         "https://res.cloudinary.com/drpqrn5jz/image/upload/v1778742688/anh8_llfnxw.jpg",
       ),
@@ -53,13 +53,13 @@ const Event = () => {
     },
     {
       id: 4,
-      city: t("home.event.destination2", "Nhạc Nước"),
+      city: t("home.event.destination2", "Nhạc nước"),
       image: getCloudinaryCardImage(
         "https://res.cloudinary.com/drpqrn5jz/image/upload/v1778742708/anh6_kdtxmm.jpg",
         640,
         420,
       ),
-      alt: "Nhạc nước với tầm nhìn đường chân trời",
+      alt: "Show nhạc nước tại Hạ Long",
     },
     {
       id: 5,
@@ -67,7 +67,7 @@ const Event = () => {
       image: getCloudinaryCardImage(
         "https://res.cloudinary.com/drpqrn5jz/image/upload/v1778742734/anh3_lgadvv.jpg",
       ),
-      alt: "Mặt tiền khách sạn boutique Montreal",
+      alt: "Khám phá hang động tại Quảng Ninh",
     },
   ];
 
@@ -77,7 +77,7 @@ const Event = () => {
       value: "21:30",
     },
     {
-      label: "Thứ 6 - Thứ 7 - Chủ Nhật",
+      label: "Thứ 6 - Thứ 7 - Chủ nhật",
       value: "Lần 1: 20:30. Lần 2: 21:45",
     },
   ];
@@ -96,7 +96,7 @@ const Event = () => {
     <div className="luxury-accommodations">
       <div className="header-section">
         <h2 className="main-title">
-          {t("home.event.title", "Sự kiện nổi bật")}
+          {t("home.event.title", "Trải nghiệm nổi bật quanh khách sạn")}
         </h2>
       </div>
 

@@ -185,7 +185,11 @@ const Header: React.FC = () => {
     // { to: "/policy", label: t('home.header.title3') }, // chuyên xuống footer
   ];
 
-  const bookingLink = { to: "/booking", label: t('home.header.title1') };
+  // Route booking actions directly to the Marina property in Exely.
+  const bookingLink = {
+    href: "/booking/?hotel_id=512866",
+    label: t('home.header.title1'),
+  };
 
   return (
     <>
@@ -338,28 +342,28 @@ const Header: React.FC = () => {
               ))}
 
               {/* Booking Link - Inside header-nav for mobile menu */}
-              <Link
-                to={bookingLink.to}
+              <a
+                href={bookingLink.href}
                 onClick={closeNav}
                 className="custom-itinerary-link header-booking-link-mobile"
               >
                 <span>{bookingLink.label}</span>
                 <CalendarCheck2 size={16} className="booking-icon" />
-              </Link>
+              </a>
             </div>
           </div>
 
           {/* Booking Link - Separate from nav-container for proper positioning */}
 
-          <Link
-            to={bookingLink.to}
+          <a
+            href={bookingLink.href}
             onClick={closeNav}
             className="custom-itinerary-link header-booking-link"
             data-no-localize
           >
             <span>{bookingLink.label}</span>
             <CalendarCheck2 size={16} className="booking-icon" />
-          </Link>
+          </a>
         </div>
       </header>
 

@@ -5,15 +5,19 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { useNavigate } from "react-router-dom";
 import DatePicker, { registerLocale } from "react-datepicker";
-import { vi } from "date-fns/locale/vi";
+import { enUS, hi, ko, ru, vi, zhCN } from "date-fns/locale";
 import { FaCalendarAlt, FaUser } from "react-icons/fa";
 import "react-datepicker/dist/react-datepicker.css";
 import "./BoxSearch.css";
 import { trackEvent } from "../../utils/analytics";
 import { useTranslation } from "@/localization";
 registerLocale("vi", vi);
+registerLocale("en", enUS);
+registerLocale("ko", ko);
+registerLocale("zh", zhCN);
+registerLocale("ru", ru);
+registerLocale("hi", hi);
 
 type DateFieldButtonProps = {
   icon: React.ReactNode;
@@ -43,18 +47,6 @@ const formatDateDisplay = (date: Date | null): string => {
   const year = date.getFullYear();
 
   return `${day}/${month}/${year}`;
-};
-
-const getNightCount = (
-  checkIn: Date,
-  checkOut: Date,
-): number => {
-  const diffMs = checkOut.getTime() - checkIn.getTime();
-  const diffDays = Math.round(
-    diffMs / (1000 * 60 * 60 * 24),
-  );
-
-  return Math.max(1, diffDays);
 };
 
 const getExelyLowestPriceUrl = (): string => {
@@ -112,8 +104,7 @@ DateFieldButton.displayName = "DateFieldButton";
 
 const BoxSearch = () => {
 
-  const { t } = useTranslation("home");
-  const navigate = useNavigate();
+  const { t, language } = useTranslation("home");
 
   const today = useMemo(() => {
     const date = new Date();
@@ -157,24 +148,12 @@ const BoxSearch = () => {
       return;
     }
 
-    const nights = getNightCount(
-      checkInDate,
-      checkOutDate,
-
+    window.location.assign(
+      "/booking/?hotel_id=512866",
     );
-
-    const queryParams = new URLSearchParams({
-      date: formatDateInput(checkInDate),
-      nights: nights.toString(),
-      adults: guestCount.toString(),
-    }).toString();
-
-    navigate(`/booking/?${queryParams}`);
   }, [
     checkInDate,
     checkOutDate,
-    guestCount,
-    navigate,
     t,
   ]);
 
@@ -362,7 +341,7 @@ const BoxSearch = () => {
             }
           }}
           minDate={today}
-          locale="vi"
+          locale={language}
           dateFormat="dd/MM/yyyy"
           customInput={
             <DateFieldButton
@@ -390,7 +369,7 @@ const BoxSearch = () => {
               )
               : tomorrow
           }
-          locale="vi"
+          locale={language}
           dateFormat="dd/MM/yyyy"
           customInput={
             <DateFieldButton
